@@ -12,5 +12,6 @@ public class ArrowDisappear : MonoBehaviour {
 
 	public void OffActive(){
 		arrow.SetActive (false);
+
 	}
 }
