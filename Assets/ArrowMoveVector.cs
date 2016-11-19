@@ -24,7 +24,7 @@ public class ArrowMoveVector : MonoBehaviour {
 	void Update () {
 		if (movingOn) {
 			timeDir += Time.deltaTime;
-			vector.z = power - gravity;
+			vector.z = power + gravity;
 			vector.y = gravity;
 			arrow.Translate(vector);
 
