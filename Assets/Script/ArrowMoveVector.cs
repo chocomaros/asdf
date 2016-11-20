@@ -18,7 +18,6 @@ public class ArrowMoveVector : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gravity = -(0.9888f * timeDir * timeDir / 3.5f);
-		Destroy (GameObject.Find("Arrow(Clone)"), 6f);
 	}
 	
 	// Update is called once per frame

@@ -28,7 +28,7 @@ public class ArrowMove : MonoBehaviour {
 		}
 	}
 
-	void onTriggerEnter(Collider collider){
+	void OnTriggerEnter(Collider collider){
 		if (collider.tag != "Capsule") {
 			movingOn = false;
 			Destroy (gameObject);

@@ -248,6 +248,7 @@ GameObject:
   - 4: {fileID: 237651701}
   - 114: {fileID: 237651704}
   - 114: {fileID: 237651703}
+  - 65: {fileID: 237651702}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -268,6 +269,18 @@ Transform:
   - {fileID: 2043170739}
   m_Father: {fileID: 1641565737}
   m_RootOrder: 0
+--- !u!65 &237651702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 237651700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0131974407, y: .0146638639, z: .971291482}
+  m_Center: {x: .0021481514, y: -.00265216827, z: -.0306915045}
 --- !u!114 &237651703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,7 +564,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6596958, guid: 63970ab00c2e95244baac2ba3da66e65, type: 2}
       propertyPath: m_Size.y
-      value: 9.99999975e-05
+      value: 22.4087524
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596958, guid: 63970ab00c2e95244baac2ba3da66e65, type: 2}
+      propertyPath: m_Center.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596958, guid: 63970ab00c2e95244baac2ba3da66e65, type: 2}
+      propertyPath: m_Size.x
+      value: 9.82009029
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596958, guid: 63970ab00c2e95244baac2ba3da66e65, type: 2}
+      propertyPath: m_Center.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63970ab00c2e95244baac2ba3da66e65, type: 2}
@@ -1172,7 +1197,7 @@ BoxCollider:
   m_GameObject: {fileID: 2043170738}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .300000012, y: 19.2999992, z: .300000012}
   m_Center: {x: 0, y: 0, z: -1}
