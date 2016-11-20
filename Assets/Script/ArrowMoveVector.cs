@@ -18,7 +18,7 @@ public class ArrowMoveVector : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gravity = -(0.9888f * timeDir * timeDir / 3.5f);
-		Destroy (GameObject.Find("Elven Long Bow Arrow(Clone)"), 6f);
+		Destroy (GameObject.Find("Arrow(Clone)"), 6f);
 	}
 	
 	// Update is called once per frame
@@ -46,10 +46,10 @@ public class ArrowMoveVector : MonoBehaviour {
 	void OnTriggerEnter(Collider collider){
 		Debug.Log ("OnTriggerEnter");
 		movingOn = false;
-		Destroy (GameObject.Find("Elven Long Bow Arrow(Clone)"),3f);
+		Destroy (GameObject.Find("Arrow(Clone)"),3f);
 	}
 	void OnTriggerStay(Collider collider){
 		movingOn = false;
-		Destroy(GameObject.Find("Elven Long Bow Arrow(Clone)"),3f);
+		Destroy(GameObject.Find("Arrow(Clone)"),3f);
 	}
 }
