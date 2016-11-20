@@ -9,13 +9,14 @@ public class Minotaur : MonoBehaviour, IEnemy {
 	private const float ATTACK_RANGE = 2.0f;
 
 	private GameObject player;
-	//private Rigidbody rigidBody;
 	public Animator animator;
+
+	private float gravity;
+	private Vector3 vector;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Capsule");
-		//rigidBody = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -42,8 +43,6 @@ public class Minotaur : MonoBehaviour, IEnemy {
 				direction.Normalize ();
 				transform.rotation= Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction),TURN_SPEED*Time.deltaTime);
 				transform.position += transform.forward*SPEED*Time.deltaTime;
-				//transform.position = Vector3.MoveTowards(transform.position, player.transform.position, SPEED * Time.deltaTime);
-				//rigidBody.MovePosition(transform.position+transform.forward*SPEED*Time.deltaTime);
 
 			}
 		} else {

@@ -9,7 +9,6 @@ public class ArrowMoveVector : MonoBehaviour {
 	public float power = 0.01f;
 	public float angle = 45f;
 
-	private float timeDir = Time.deltaTime;
 	private float gravity;
 
 	private bool movingOn = true;
@@ -17,38 +16,35 @@ public class ArrowMoveVector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gravity = -(0.9888f * timeDir * timeDir / 3.5f);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (movingOn) {
-			timeDir += Time.deltaTime;
+		if (movingOn && gameObject.name == "Arrow(Clone)") {
+			gravity = -(0.9888f * Time.deltaTime * Time.deltaTime / 3.5f);
+			Debug.Log(gravity);
 			vector.z = power - gravity;
 			vector.y = gravity;
 			arrow.Translate(vector);
-			//Debug.Log (gravity);
 			arrow.Rotate (new Vector3(Mathf.Cos(angle * Mathf.PI / 180f),0,0));
-			//rbArrow.AddForce(vector);
-			//Quaternion deltaRotation = Quaternion.Euler (new Vector3(Mathf.Cos(angle * Mathf.PI / 180f),0,0) * Time.deltaTime);
-			//rbArrow.MoveRotation (rbArrow.rotation * deltaRotation);
 		}
 	}
 
-	void OnCollisionEnter(Collision other){
-		if (other.transform.tag == "Minotaur") {
-			Debug.Log ("OnCollisionEnter");
-			movingOn = false;
-		}
-	}
 
 	void OnTriggerEnter(Collider collider){
-		Debug.Log ("OnTriggerEnter");
-		movingOn = false;
-		Destroy (GameObject.Find("Arrow(Clone)"),3f);
+		if (collider.transform.tag != "Player") {
+			if (collider.transform.tag == "enemy") {
+				if(movingOn){
+					Debug.Log ("enemy");
+				}
+			}
+			movingOn = false;
+			Destroy (gameObject,3f);
+		}
 	}
-	void OnTriggerStay(Collider collider){
+	/*void OnTriggerStay(Collider collider){
 		movingOn = false;
 		Destroy(GameObject.Find("Arrow(Clone)"),3f);
-	}
+	}*/
 }
