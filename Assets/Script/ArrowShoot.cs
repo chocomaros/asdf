@@ -8,7 +8,8 @@ public class ArrowShoot : MonoBehaviour {
 	public Transform arrowPosition;
 	public Transform tCamera;
 
-	private const float MAX_POWER = 1.0f;
+	private const float MAX_POWER = 0.5f;
+	private const float POWER_INCREASE_UNIT = 0.005f;
 	private const float APPEAR_TIME = 1.0f; // 1초
 
 	private float power;
@@ -23,11 +24,11 @@ public class ArrowShoot : MonoBehaviour {
 	void Update () {
 		if (isAppear) {
 			if(Input.GetMouseButtonDown(0)){
-				power = 0.01f;
+				power = POWER_INCREASE_UNIT;
 			}
 			if(Input.GetMouseButton(0)){
-				if(power <= MAX_POWER -0.01f){
-					power += 0.01f;
+				if(power <= MAX_POWER - POWER_INCREASE_UNIT){
+					power += POWER_INCREASE_UNIT;
 				} 
 			}
 			if(Input.GetMouseButtonUp(0)){
