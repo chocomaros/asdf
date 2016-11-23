@@ -120,8 +120,12 @@ public class Enemy : MonoBehaviour {
 		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(target.transform.position - transform.position),TurnSpeed*Time.deltaTime);
 		agent.Move (transform.forward*Time.deltaTime);
 
-		if (Vector3.Distance (target.transform.position, transform.position) < AttackDistance) {
+		float distance = Vector3.Distance (target.transform.position, transform.position);
+		if ( distance < AttackDistance) {
 			state = State.ATTACK;
+		}
+		if (distance > SightDistance) {
+			state = State.PATROL;
 		}
 	}
 
@@ -159,15 +163,7 @@ public class Enemy : MonoBehaviour {
 		return equal;
 	}
 
-	void OnTriggerEnter(Collider collider){
-		if (collider.tag == "arrow") {
-			Debug.Log(HP + "");
-			animator.SetTrigger("hit");
-			HP -= 50;
-			if(HP <= 0){
-				Debug.Log("hp 없다");
-				state = State.DEATH;
-			}
-		}
+	public void hitTurn(Vector3 hitPosition){
+		//transform.rotation = Quaternion.Slerp(transform
 	}
 }

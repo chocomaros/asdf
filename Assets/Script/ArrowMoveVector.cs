@@ -36,6 +36,8 @@ public class ArrowMoveVector : MonoBehaviour {
 			if (collider.transform.tag == "enemy") {
 				if(movingOn){
 					arrow.parent = collider.transform;
+					collider.GetComponent<Enemy>().HP -= 100;
+					//collider.GetComponent<Enemy>()
 					Debug.Log ("enemy");
 					Destroy (gameObject,3f);
 				}
