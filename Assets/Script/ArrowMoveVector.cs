@@ -23,7 +23,6 @@ public class ArrowMoveVector : MonoBehaviour {
 	void Update () {
 		if (movingOn && gameObject.name == "Arrow(Clone)") {
 			gravity = -(0.9888f * Time.deltaTime * Time.deltaTime / 3.5f);
-			Debug.Log(gravity);
 			vector.z = power - gravity;
 			vector.y = gravity;
 			arrow.Translate(vector);
@@ -36,11 +35,15 @@ public class ArrowMoveVector : MonoBehaviour {
 		if (collider.transform.tag != "Player") {
 			if (collider.transform.tag == "enemy") {
 				if(movingOn){
+					arrow.parent = collider.transform;
 					Debug.Log ("enemy");
+					Destroy (gameObject,3f);
 				}
+			} else{
+				Destroy (gameObject,3f);
 			}
 			movingOn = false;
-			Destroy (gameObject,3f);
+
 		}
 	}
 	/*void OnTriggerStay(Collider collider){
