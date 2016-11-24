@@ -7,6 +7,8 @@ TagManager:
   - enemy
   - wall
   - arrow
+  - Wall
+  - enemy_head
   layers:
   - Default
   - TransparentFX

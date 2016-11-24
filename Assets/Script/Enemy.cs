@@ -70,9 +70,6 @@ public class Enemy : MonoBehaviour {
 		animator.SetFloat ("speed", PatrolSpeed);
 		if (isTurning) {
 			transform.rotation = Quaternion.Slerp(transform.rotation,qua_rotation,TurnSpeed*Time.deltaTime);
-			//if(AlmostEqual(transform.rotation.eulerAngles,rotateVector,1.0f)){
-			//	isTurning = false;
-			//}
 			if(AlmostEqual(qua_rotation,transform.rotation,0.01f)){
 				isTurning = false;
 			}
@@ -86,10 +83,9 @@ public class Enemy : MonoBehaviour {
 		}
 
 		RaycastHit hit;
-		Debug.DrawRay (transform.position + Vector3.up * heightMultiplier, transform.forward * SightDistance, Color.green);
 		Debug.DrawRay (transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right) * SightDistance, Color.green);
 		Debug.DrawRay (transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right) * SightDistance, Color.green);
-
+		Debug.Log ("right : " + transform.right);
 		if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward, out hit, SightDistance)){
 			if(hit.collider.tag == "Player"){
 				state = State.CHASE;
@@ -100,16 +96,18 @@ public class Enemy : MonoBehaviour {
 				}
 			}
 		}
-		if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward + transform.right, out hit, SightDistance)){
-			if(hit.collider.tag == "Player"){
-				state = State.CHASE;
-				target = hit.collider.gameObject;
+		for (int i = 1; i<11; i++) {
+			if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward + (transform.right*0.1f*i), out hit, SightDistance)){
+				if(hit.collider.tag == "Player"){
+					state = State.CHASE;
+					target = hit.collider.gameObject;
+				}
 			}
-		}
-		if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward - transform.right, out hit, SightDistance)){
-			if(hit.collider.tag == "Player"){
-				state = State.CHASE;
-				target = hit.collider.gameObject;
+			if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward - transform.right*0.1f*i, out hit, SightDistance)){
+				if(hit.collider.tag == "Player"){
+					state = State.CHASE;
+					target = hit.collider.gameObject;
+				}
 			}
 		}
 	}
