@@ -31,12 +31,12 @@ public class Enemy : MonoBehaviour {
 	private bool isTurning = false;
 	private Quaternion qua_rotation;
 
-	private NavMeshAgent agent;
+	private UnityEngine.AI.NavMeshAgent agent;
 	private Rigidbody rigidBody;
 
 	// Use this for initialization
 	void Start () {
-		agent = GetComponent<NavMeshAgent> ();
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 		timer = 0;
 		patrolMoveTime = Random.Range (PatrolMoveTimeMin, PatrolMoveTimeMax);
 		StartCoroutine ("FSM");
