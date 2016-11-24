@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour {
 		RaycastHit hit;
 		Debug.DrawRay (transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right) * SightDistance, Color.green);
 		Debug.DrawRay (transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right) * SightDistance, Color.green);
-		Debug.Log ("right : " + transform.right);
+		//Debug.Log ("right : " + transform.right);
 		if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward, out hit, SightDistance)){
 			if(hit.collider.tag == "Player"){
 				state = State.CHASE;
