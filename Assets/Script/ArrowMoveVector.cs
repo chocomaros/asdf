@@ -36,8 +36,13 @@ public class ArrowMoveVector : MonoBehaviour {
 			if (collider.transform.tag == "enemy") {
 				if(movingOn){
 					arrow.parent = collider.transform;
-					collider.GetComponent<Enemy>().HP -= 100;
-					//collider.GetComponent<Enemy>()
+					collider.GetComponent<Enemy>().HP -= 10;
+					if(collider.GetComponent<Enemy>().HP <= 0){
+						collider.GetComponent<Enemy>().state = Enemy.State.DEATH;
+					} else{
+						collider.GetComponent<Enemy>().animator.SetTrigger("hit");
+						collider.GetComponent<Enemy>().HitTurn(arrow.transform.position);
+					}
 					Debug.Log ("enemy");
 					Destroy (gameObject,3f);
 				}

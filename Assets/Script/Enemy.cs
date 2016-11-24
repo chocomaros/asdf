@@ -27,8 +27,9 @@ public class Enemy : MonoBehaviour {
 
 	private float timer;
 	private int patrolMoveTime;
-	private bool isTurning = false;
 	private float rand_y;
+	private bool isTurning = false;
+	private Quaternion qua_rotation;
 
 	private NavMeshAgent agent;
 	private Rigidbody rigidBody;
@@ -68,10 +69,11 @@ public class Enemy : MonoBehaviour {
 	void Patrol(){
 		animator.SetFloat ("speed", PatrolSpeed);
 		if (isTurning) {
-			Vector3 rotateVector = new Vector3(0,rand_y,0);
-			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(rotateVector),TurnSpeed*Time.deltaTime);
-			Debug.Log("(0,"+rand_y+",0)" + transform.rotation.eulerAngles);
-			if(AlmostEqual(transform.rotation.eulerAngles,rotateVector,1.0f)){
+			transform.rotation = Quaternion.Slerp(transform.rotation,qua_rotation,TurnSpeed*Time.deltaTime);
+			//if(AlmostEqual(transform.rotation.eulerAngles,rotateVector,1.0f)){
+			//	isTurning = false;
+			//}
+			if(AlmostEqual(qua_rotation,transform.rotation,0.01f)){
 				isTurning = false;
 			}
 		} else {
@@ -79,7 +81,7 @@ public class Enemy : MonoBehaviour {
 			timer += Time.deltaTime;
 			agent.Move (transform.forward*Time.deltaTime);
 			if (patrolMoveTime <= timer) {
-				SetTurning(0,360);
+				SetRandomTurning(0,360);
 			}
 		}
 
@@ -94,7 +96,7 @@ public class Enemy : MonoBehaviour {
 				target = hit.collider.gameObject;
 			} else if(hit.collider.tag == "wall"){
 				if(Vector3.Distance(hit.collider.gameObject.transform.position,gameObject.transform.position) < PatrolTurnDistance && !isTurning){
-					SetTurning(90,270);
+					SetRandomTurning(90,270);
 				}
 			}
 		}
@@ -116,7 +118,6 @@ public class Enemy : MonoBehaviour {
 		animator.SetFloat ("speed", ChaseSpeed);
 		agent.speed = ChaseSpeed;
 		agent.destination = target.transform.position;
-		Debug.Log (target.transform.position);
 		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(target.transform.position - transform.position),TurnSpeed*Time.deltaTime);
 		agent.Move (transform.forward*Time.deltaTime);
 
@@ -138,32 +139,69 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	void Death(){
+	public void Death(){
+		animator.SetTrigger ("dead");
 		isAlive = false;
-		animator.SetBool ("isAlive", false);
 		Destroy (gameObject, 3f);
 	}
 
-	void SetTurning(int min, int max){
+	void SetRandomTurning(int min, int max){
 		isTurning = true;
 		rand_y = Random.Range(min,max);
 		patrolMoveTime = Random.Range(PatrolMoveTimeMin,PatrolMoveTimeMax);
+		qua_rotation = Quaternion.Euler (new Vector3 (0, rand_y, 0));
 		timer = 0;
 	}
 
-	bool AlmostEqual(Vector3 v1, Vector3 v2, float precision){
+	private bool AlmostEqual(Vector3 v1, Vector3 v2, float precision){
 		bool equal = true;
-		if (Mathf.Abs (v1.x - v2.x) > precision)
+		if (Mathf.Abs (v1.x - v2.x) > precision) {
 			equal = false;
-		if (Mathf.Abs (v1.y - v2.y) > precision)
+			return equal;
+		}
+		if (Mathf.Abs (v1.y - v2.y) > precision){
 			equal = false;
-		if (Mathf.Abs (v1.z - v2.z) > precision)
+			return equal;
+		}
+		if (Mathf.Abs (v1.z - v2.z) > precision){
 			equal = false;
+			return equal;
+		}
 
 		return equal;
 	}
 
-	public void hitTurn(Vector3 hitPosition){
-		//transform.rotation = Quaternion.Slerp(transform
+	private bool AlmostEqual(Quaternion quaternion1, Quaternion quaternion2, float precision){
+		Debug.Log (quaternion1);
+		Debug.Log (quaternion2);
+		bool equal = true;
+		if (Mathf.Abs (quaternion1.x - quaternion2.x) > precision) {
+			equal = false;
+			return equal;
+		}
+		if (Mathf.Abs (quaternion1.y - quaternion2.y) > precision) {
+			equal = false;
+			return equal;
+		}
+		if (Mathf.Abs (quaternion1.z - quaternion2.z) > precision) {
+			equal = false;
+			return equal;
+		}
+		if (Mathf.Abs (quaternion1.w - quaternion2.w) > precision) {
+			equal = false;
+			return equal;
+		}
+
+		return equal;
+	}
+
+	public void HitTurn(Vector3 hitPosition){
+		isTurning = true;
+		Vector3 direction;
+		direction = hitPosition - transform.position;
+		direction.y = 0;
+		qua_rotation = Quaternion.LookRotation (direction);
+		Debug.Log (direction);
+		timer = 0;
 	}
 }
