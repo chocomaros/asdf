@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour {
 
 	public float HP = 100f;
 
+
 	private GameObject target;
 	public Animator animator;
 
@@ -33,6 +34,8 @@ public class Enemy : MonoBehaviour {
 
 	private UnityEngine.AI.NavMeshAgent agent;
 	private Rigidbody rigidBody;
+
+	public GameObject blood;
 
 	// Use this for initialization
 	void Start () {
@@ -170,8 +173,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private bool AlmostEqual(Quaternion quaternion1, Quaternion quaternion2, float precision){
-		Debug.Log (quaternion1);
-		Debug.Log (quaternion2);
 		bool equal = true;
 		if (Mathf.Abs (quaternion1.x - quaternion2.x) > precision) {
 			equal = false;
@@ -201,5 +202,10 @@ public class Enemy : MonoBehaviour {
 		qua_rotation = Quaternion.LookRotation (direction);
 		Debug.Log (direction);
 		timer = 0;
+	}
+
+	public void BloodEffect(Transform transform){
+		ParticleSystem blood = Instantiate(this.blood.GetComponent<ParticleSystem>(),transform.position,transform.rotation,transform);
+		blood.Emit(5);
 	}
 }
