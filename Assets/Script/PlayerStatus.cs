@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour {
 
 	public int MaxHp = 10;
-	private int hp = 10;
+	private int hp;
 
 	// Use this for initialization
 	void Start () {

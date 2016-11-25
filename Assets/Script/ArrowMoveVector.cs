@@ -53,24 +53,17 @@ public class ArrowMoveVector : MonoBehaviour {
                 if (movingOn)
                 {
                     arrow.parent = collider.transform;
-                    Transform transForm = collider.transform;
-
-                    Debug.Log("head   " + transForm.tag);
-                    while (transForm.tag != "enemy")
+                   
+					collider.GetComponentInParent<Enemy>().HP -= 50;
+					collider.GetComponentInParent<Enemy>().BloodEffect(arrow.transform);
+					if (collider.GetComponentInParent<Enemy>().HP <= 0)
                     {
-                        transForm = transForm.parent;
-                        Debug.Log("head   " + transForm.tag);
-                    }
-
-                    transForm.GetComponent<Enemy>().HP -= 50;
-                    if (transForm.GetComponent<Enemy>().HP <= 0)
-                    {
-                        transForm.GetComponent<Enemy>().state = Enemy.State.DEATH;
+						collider.GetComponentInParent<Enemy>().state = Enemy.State.DEATH;
                     }
                     else
                     {
-                        transForm.GetComponent<Enemy>().animator.SetTrigger("hit");
-                        transForm.GetComponent<Enemy>().HitTurn(arrow.transform.position);
+						collider.GetComponentInParent<Enemy>().animator.SetTrigger("hit");
+						collider.GetComponentInParent<Enemy>().HitTurn(arrow.transform.position);
                     }
                     Destroy(gameObject, 3f);
                 }

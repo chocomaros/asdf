@@ -141,6 +141,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void Death(){
+		agent.Stop ();
 		animator.SetTrigger ("dead");
 		isAlive = false;
 		Destroy (gameObject, 3f);

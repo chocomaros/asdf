@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114783431993078046}
   m_Layer: 5
   m_Name: Heart_Half
-  m_TagString: Untagged
+  m_TagString: heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

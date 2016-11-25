@@ -1349,7 +1349,7 @@ MonoBehaviour:
     type: 2}
   health_none: {fileID: 1879206628962768, guid: 891c304aca74df34cbaf3766f363d421,
     type: 2}
-  player_status: {fileID: 1754005361}
+  player: {fileID: 1754005361}
 --- !u!1 &1654678125
 GameObject:
   m_ObjectHideFlags: 0
