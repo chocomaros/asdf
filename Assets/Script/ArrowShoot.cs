@@ -7,6 +7,7 @@ public class ArrowShoot : MonoBehaviour {
 	public ArrowDisappear arrowGUI;
 	public Transform arrowPosition;
 	public Transform tCamera;
+	public GameObject Aim;
 
 	private const float MAX_POWER = 0.5f;
 	private const float POWER_INCREASE_UNIT = 0.005f;
@@ -28,6 +29,12 @@ public class ArrowShoot : MonoBehaviour {
 			if(Input.GetMouseButton(0)){
 				if(power <= MAX_POWER - POWER_INCREASE_UNIT){
 					power += POWER_INCREASE_UNIT;
+					float scale = 1 - (power / (float)MAX_POWER);
+					if (scale < 0.1f) {
+						scale = 0.1f;
+					} else {
+						Aim.transform.localScale = new Vector3(scale,scale,0);
+					}
 				} 
 			}
 			if(Input.GetMouseButtonUp(0)){
@@ -36,6 +43,7 @@ public class ArrowShoot : MonoBehaviour {
 				Instantiate(arrow,arrowPosition.position,arrowPosition.rotation);
 				arrowGUI.OffActive();
 				isAppear = false;
+				Aim.SetActive (false);
 				Invoke("arrowGUIOn",APPEAR_TIME);
 			}
 		} else {
@@ -45,6 +53,8 @@ public class ArrowShoot : MonoBehaviour {
 
 	private void arrowGUIOn(){
 		arrowGUI.OnActive ();
+		Aim.transform.localScale = new Vector3 (1, 1, 0);
+		Aim.SetActive (true);
 		isAppear = true;
 	}
 }
