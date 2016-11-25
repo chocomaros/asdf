@@ -11,7 +11,7 @@ public class ArrowShoot : MonoBehaviour {
 
 	private const float MAX_POWER = 0.5f;
 	private const float POWER_INCREASE_UNIT = 0.005f;
-	private const float APPEAR_TIME = 1.0f; // 1초
+	private const float APPEAR_TIME = 0.8f; // 1초
 
 	private float power;
 	private bool isAppear = true;
@@ -43,7 +43,7 @@ public class ArrowShoot : MonoBehaviour {
 			}
 			if(Input.GetMouseButtonUp(0)){
 				if (isMouseDown) {
-					arrow.GetComponent<ArrowReady>().power = power;
+					arrow.GetComponent<ArrowReady>().power = power+0.2f;
 					arrow.GetComponent<ArrowReady>().angle = 360f - arrowPosition.eulerAngles.x;
 					Instantiate(arrow,arrowPosition.position,arrowPosition.rotation);
 					arrowGUI.OffActive();

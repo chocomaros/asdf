@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour {
 	public float ChaseSpeed = 1.0f;
 	public float TurnSpeed = 2.0f;
 	public float SightDistance = 10.0f;
-	public float AttackDistance = 2.0f;
+	//public float AttackDistance = 2.0f;
 	public float heightMultiplier = 1.5f;
 
 	public float PatrolTurnDistance = 7.0f;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
 
 	public float HP = 100f;
 
-
+	public IEnemyAttack enemyAttack;
 	private GameObject target;
 	public Animator animator;
 
@@ -58,8 +58,9 @@ public class Enemy : MonoBehaviour {
 			case State.CHASE :
 				Chase ();
 				break;
-			case State.ATTACK :
-				Attack();
+			case State.ATTACK:
+				state = enemyAttack.attack (this, target);
+				//Attack();
 				break;
 			case State.DEATH :
 				Death ();
@@ -125,14 +126,14 @@ public class Enemy : MonoBehaviour {
 		agent.Move (transform.forward*Time.deltaTime);
 
 		float distance = Vector3.Distance (target.transform.position, transform.position);
-		if ( distance < AttackDistance) {
+		if ( enemyAttack.checkAttack(distance)) {
 			state = State.ATTACK;
 		}
 		if (distance > SightDistance) {
 			state = State.PATROL;
 		}
 	}
-
+	/*
 	void Attack(){
 		Debug.Log ("attack");
 		animator.SetBool ("isAttacking", true);
@@ -140,7 +141,7 @@ public class Enemy : MonoBehaviour {
 			animator.SetBool("isAttacking", false);
 			state = State.CHASE;
 		}
-	}
+	}*/
 
 	public void Death(){
 		agent.Stop ();
@@ -152,7 +153,6 @@ public class Enemy : MonoBehaviour {
 	void SetRandomTurning(int min, int max){
 		isTurning = true;
 		rand_y = Random.Range(min,max);
-		Debug.Log (this.transform.rotation.eulerAngles.y);
 		patrolMoveTime = Random.Range(PatrolMoveTimeMin,PatrolMoveTimeMax);
 		qua_rotation = Quaternion.Euler (new Vector3 (0, this.transform.rotation.eulerAngles.y+rand_y, 0));
 		timer = 0;
