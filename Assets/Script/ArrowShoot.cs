@@ -15,6 +15,7 @@ public class ArrowShoot : MonoBehaviour {
 
 	private float power;
 	private bool isAppear = true;
+	private bool isMouseDown = false;
 
 	// Use this for initialization
 	void Start () {
@@ -24,27 +25,33 @@ public class ArrowShoot : MonoBehaviour {
 	void Update () {
 		if (isAppear) {
 			if(Input.GetMouseButtonDown(0)){
+				isMouseDown = true;
 				power = POWER_INCREASE_UNIT;
 			}
 			if(Input.GetMouseButton(0)){
-				if(power <= MAX_POWER - POWER_INCREASE_UNIT){
-					power += POWER_INCREASE_UNIT;
-					float scale = 1 - (power / (float)MAX_POWER);
-					if (scale < 0.1f) {
-						scale = 0.1f;
-					} else {
-						Aim.transform.localScale = new Vector3(scale,scale,0);
-					}
-				} 
+				if (isMouseDown) {
+					if(power <= MAX_POWER - POWER_INCREASE_UNIT){
+						power += POWER_INCREASE_UNIT;
+						float scale = 1 - (power / (float)MAX_POWER);
+						if (scale < 0.1f) {
+							scale = 0.1f;
+						} else {
+							Aim.transform.localScale = new Vector3(scale,scale,0);
+						}
+					} 
+				}
 			}
 			if(Input.GetMouseButtonUp(0)){
-				arrow.GetComponent<ArrowReady>().power = power;
-				arrow.GetComponent<ArrowReady>().angle = 360f - arrowPosition.eulerAngles.x;
-				Instantiate(arrow,arrowPosition.position,arrowPosition.rotation);
-				arrowGUI.OffActive();
-				isAppear = false;
-				Aim.SetActive (false);
-				Invoke("arrowGUIOn",APPEAR_TIME);
+				if (isMouseDown) {
+					arrow.GetComponent<ArrowReady>().power = power;
+					arrow.GetComponent<ArrowReady>().angle = 360f - arrowPosition.eulerAngles.x;
+					Instantiate(arrow,arrowPosition.position,arrowPosition.rotation);
+					arrowGUI.OffActive();
+					isAppear = false;
+					isMouseDown = false;
+					Aim.SetActive (false);
+					Invoke("arrowGUIOn",APPEAR_TIME);
+				}
 			}
 		} else {
 
