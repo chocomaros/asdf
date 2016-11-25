@@ -73,8 +73,9 @@ public class Enemy : MonoBehaviour {
 		animator.SetFloat ("speed", PatrolSpeed);
 		if (isTurning) {
 			transform.rotation = Quaternion.Slerp(transform.rotation,qua_rotation,TurnSpeed*Time.deltaTime);
-			if(AlmostEqual(qua_rotation,transform.rotation,0.01f)){
+			if(AlmostEqual(qua_rotation,transform.rotation,0.05f)){
 				isTurning = false;
+				Debug.Log ("turning false");
 			}
 		} else {
 			agent.speed = PatrolSpeed;
@@ -94,8 +95,9 @@ public class Enemy : MonoBehaviour {
 				state = State.CHASE;
 				target = hit.collider.gameObject;
 			} else if(hit.collider.tag == "wall"){
-				if(Vector3.Distance(hit.collider.gameObject.transform.position,gameObject.transform.position) < PatrolTurnDistance && !isTurning){
-					SetRandomTurning(90,270);
+				if(hit.distance < PatrolTurnDistance && !isTurning){
+					Debug.Log ("wall");
+					SetRandomTurning(120,240);
 				}
 			}
 		}
@@ -150,8 +152,9 @@ public class Enemy : MonoBehaviour {
 	void SetRandomTurning(int min, int max){
 		isTurning = true;
 		rand_y = Random.Range(min,max);
+		Debug.Log (this.transform.rotation.eulerAngles.y);
 		patrolMoveTime = Random.Range(PatrolMoveTimeMin,PatrolMoveTimeMax);
-		qua_rotation = Quaternion.Euler (new Vector3 (0, rand_y, 0));
+		qua_rotation = Quaternion.Euler (new Vector3 (0, this.transform.rotation.eulerAngles.y+rand_y, 0));
 		timer = 0;
 	}
 
@@ -175,19 +178,19 @@ public class Enemy : MonoBehaviour {
 
 	private bool AlmostEqual(Quaternion quaternion1, Quaternion quaternion2, float precision){
 		bool equal = true;
-		if (Mathf.Abs (quaternion1.x - quaternion2.x) > precision) {
+		if (Mathf.Abs (Mathf.Abs(quaternion1.x) - Mathf.Abs(quaternion2.x)) > precision) {
 			equal = false;
 			return equal;
 		}
-		if (Mathf.Abs (quaternion1.y - quaternion2.y) > precision) {
+		if (Mathf.Abs (Mathf.Abs(quaternion1.y) - Mathf.Abs(quaternion2.y)) > precision) {
 			equal = false;
 			return equal;
 		}
-		if (Mathf.Abs (quaternion1.z - quaternion2.z) > precision) {
+		if (Mathf.Abs (Mathf.Abs(quaternion1.z) - Mathf.Abs(quaternion2.z)) > precision) {
 			equal = false;
 			return equal;
 		}
-		if (Mathf.Abs (quaternion1.w - quaternion2.w) > precision) {
+		if (Mathf.Abs (Mathf.Abs(quaternion1.w) - Mathf.Abs(quaternion2.w)) > precision) {
 			equal = false;
 			return equal;
 		}
@@ -201,7 +204,6 @@ public class Enemy : MonoBehaviour {
 		direction = hitPosition - transform.position;
 		direction.y = 0;
 		qua_rotation = Quaternion.LookRotation (direction);
-		Debug.Log (direction);
 		timer = 0;
 	}
 

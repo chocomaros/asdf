@@ -4,7 +4,6 @@ using System.Collections;
 public class ArrowMoveVector : MonoBehaviour {
 
 	public Transform arrow;
-	//public Rigidbody rbArrow;
 
 	public float power = 0.01f;
 	public float angle = 45f;
@@ -65,6 +64,7 @@ public class ArrowMoveVector : MonoBehaviour {
 						collider.GetComponentInParent<Enemy>().animator.SetTrigger("hit");
 						collider.GetComponentInParent<Enemy>().HitTurn(arrow.transform.position);
                     }
+					Debug.Log ("enemy head");
                     Destroy(gameObject, 3f);
                 }
             }else{
@@ -74,8 +74,4 @@ public class ArrowMoveVector : MonoBehaviour {
 
 		}
 	}
-	/*void OnTriggerStay(Collider collider){
-		movingOn = false;
-		Destroy(GameObject.Find("Arrow(Clone)"),3f);
-	}*/
 }
