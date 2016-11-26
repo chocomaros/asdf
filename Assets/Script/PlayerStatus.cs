@@ -20,22 +20,10 @@ public class PlayerStatus : MonoBehaviour {
 
 	public void healthChange(int changedHp){
 		this.hp += changedHp;
-		int hpPercent = (int)(hp / (float)MaxHp * 100);
-		Debug.Log (hpPercent);
+		if (hp < 0) hp = 0;
+		float hpRate = hp / (float)MaxHp;
 		Color c = GameObject.FindGameObjectWithTag ("background").GetComponent<Image> ().color;
-		if (hpPercent <= 20) {
-			c.a = 0.5f;
-		} else if (hpPercent > 20 && hpPercent <= 40) {
-			c.a = 0.4f;
-		} else if (hpPercent > 40 && hpPercent <= 60) {
-			c.a = 0.3f;
-		} else if (hpPercent > 60 && hpPercent <= 80) {
-			c.a = 0.2f;
-		} else if (hpPercent > 80 && hpPercent < 100) {
-			c.a = 0.1f;
-		} else {
-			c.a = 0.0f;
-		}
+		c.a = 0.5f - 0.5f * hpRate;
 		GameObject.FindGameObjectWithTag ("background").GetComponent<Image> ().color = c;
 	}
 	public int getHealth(){

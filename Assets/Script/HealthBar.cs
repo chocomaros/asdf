@@ -25,7 +25,6 @@ public class HealthBar : MonoBehaviour
 			int heartNum = Mathf.CeilToInt (maxHealth / (float)2);
 			for (int i = 0; i < heartNum; i++) {
 				DestroyImmediate(GameObject.FindWithTag("heart"));
-				Debug.Log (i);
 			}
 			health = status.getHealth ();
 			maxHealth = status.getMaxHealth ();
