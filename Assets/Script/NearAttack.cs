@@ -11,7 +11,6 @@ public class NearAttack : IEnemyAttack {
 		return distance < AttackDistance;
 	}
 	public override Enemy.State attack(Enemy enemy, GameObject target){
-		Debug.Log ("attack");
 		enemy.animator.SetBool ("isAttacking", true);
 		attackingTime++;
 		if (attackingTime > AttackTime) {

@@ -35,7 +35,7 @@ public class ArrowMoveVector : MonoBehaviour {
 			if (collider.transform.tag == "enemy") {
 				if(movingOn){
 					arrow.parent = collider.transform;
-					collider.GetComponent<Enemy>().HP -= 10;
+					collider.GetComponent<Enemy>().HP -= 50*power;
 					collider.GetComponent<Enemy>().BloodEffect(arrow.transform);
 					if(collider.GetComponent<Enemy>().HP <= 0){
 						collider.GetComponent<Enemy>().state = Enemy.State.DEATH;
@@ -53,7 +53,7 @@ public class ArrowMoveVector : MonoBehaviour {
                 {
                     arrow.parent = collider.transform;
                    
-					collider.GetComponentInParent<Enemy>().HP -= 50;
+					collider.GetComponentInParent<Enemy>().HP -= 2*50*power;
 					collider.GetComponentInParent<Enemy>().BloodEffect(arrow.transform);
 					if (collider.GetComponentInParent<Enemy>().HP <= 0)
                     {

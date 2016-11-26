@@ -9,6 +9,7 @@ TagManager:
   - arrow
   - enemy_head
   - heart
+  - background
   layers:
   - Default
   - TransparentFX
