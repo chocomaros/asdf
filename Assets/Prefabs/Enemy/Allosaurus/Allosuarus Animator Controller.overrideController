@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Allosuarus Animator Controller
+  m_Controller: {fileID: 9100000, guid: 89bb554d79aa99745aa5eab5d3f79e41, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a4ca2af916549ea4f9827a0b4b5045de, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 93d72b4556df7a14a8ba3e9636adba31, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 70440c89edcef1e439dde9b8323321dd, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 35396b2ea4cede0439559b3d7162ca26, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 315c064ea88cd3d4c8cc12ebce4d1225, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 47243b1fd099c1243b117df830f412f1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 09920c1f03e9b994794a7e8e90651aad, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: d1ad455fa0850374cbe78b60bc11c305, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7cb38229851219a44a9414298fc7f0e7, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 92cf7fb090ba49a418f829d521feb727, type: 2}
