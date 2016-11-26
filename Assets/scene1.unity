@@ -265,6 +265,11 @@ Transform:
   m_Father: {fileID: 1450626719}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &193682590 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1461620667861498, guid: 86dd5f60103a36343954b1e93183a3f2,
+    type: 2}
+  m_PrefabInternal: {fileID: 860232480}
 --- !u!1 &244661090 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 135370, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
@@ -567,7 +572,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 435260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
       propertyPath: m_LocalScale.x
@@ -1528,7 +1533,7 @@ Transform:
   - {fileID: 690078900}
   - {fileID: 1488080621}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488080617
 GameObject:
@@ -1707,7 +1712,7 @@ Transform:
   m_LocalScale: {x: 2.3483148, y: 1.8155867, z: 1.861422}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1549331441
 Rigidbody:
@@ -1970,7 +1975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfda526014f04f40bd4b7c574950409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
+  arrow: {fileID: 193682590}
 --- !u!114 &1654678128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,7 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709c39331b9549649bec0c33bc127d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
+  arrow: {fileID: 193682590}
   arrowGUI: {fileID: 1654678127}
   arrowPosition: {fileID: 1654678126}
   tCamera: {fileID: 80211027}
@@ -2079,7 +2084,7 @@ RectTransform:
   - {fileID: 2011458468}
   - {fileID: 578962267}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2466,7 +2471,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 435260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
       propertyPath: m_LocalScale.x
