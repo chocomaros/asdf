@@ -92,7 +92,7 @@ ModelImporter:
     400084: IK Chain07
     400086: IK Chain08
     4300000: allosaurus
-    7400000: Take 001
+    7400000: allo_die
     9500000: //RootNode
     11100000: //RootNode
     13700000: allosaurus
@@ -111,13 +111,129 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: allo_die
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 86
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: allosaurus
+        weight: 1
+      - path: Bone01
+        weight: 1
+      - path: Bone01/Bone08
+        weight: 1
+      - path: Bone01/Bone08/Bone32
+        weight: 1
+      - path: Bone01/Bone08/Bone32/Bone09
+        weight: 1
+      - path: Bone01/Bone08/Bone32/Bone09/Bone31
+        weight: 1
+      - path: Bone01/Bone08/Bone32/Bone09/Bone31/Bone10
+        weight: 1
+      - path: Bone01/Bone08/Bone32/Bone09/Bone31/Bone10/Bone33
+        weight: 1
+      - path: Bone01/Bone08/Bone32/Bone09/Bone31/Bone10/Bone33/Bone37
+        weight: 1
+      - path: Bone01/Bone08/Bone32/Bone09/Bone31/Bone10/Bone33/Bone37/Bone11
+        weight: 1
+      - path: Bone01/Bone12
+        weight: 1
+      - path: Bone01/Bone12/Bone13
+        weight: 1
+      - path: Bone01/Bone12/Bone13/Bone14
+        weight: 1
+      - path: Bone01/Bone12/Bone13/Bone14/Bone15
+        weight: 1
+      - path: Bone01/Bone12/Bone13/Bone14/Bone15/Bone20
+        weight: 1
+      - path: Bone01/Bone21
+        weight: 1
+      - path: Bone01/Bone21/Bone22
+        weight: 1
+      - path: Bone01/Bone21/Bone22/Bone23
+        weight: 1
+      - path: Bone01/Bone21/Bone22/Bone23/Bone24
+        weight: 1
+      - path: Bone01/Bone21/Bone22/Bone23/Bone24/Bone25
+        weight: 1
+      - path: Bone01/Bone38
+        weight: 1
+      - path: Bone01/Bone38/Bone02
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03/Bone34
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03/Bone34/Bone04
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03/Bone34/Bone04/Bone30
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03/Bone34/Bone04/Bone30/Bone05
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03/Bone34/Bone04/Bone30/Bone06
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone03/Bone34/Bone04/Bone30/Bone06/Bone07
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone16
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone16/Bone17
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone16/Bone17/Bone18
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone16/Bone17/Bone18/Bone35
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone16/Bone17/Bone18/Bone35/Bone19
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone26
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone26/Bone27
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone26/Bone27/Bone28
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone26/Bone27/Bone28/Bone36
+        weight: 1
+      - path: Bone01/Bone38/Bone02/Bone26/Bone27/Bone28/Bone36/Bone29
+        weight: 1
+      - path: IK Chain05
+        weight: 1
+      - path: IK Chain06
+        weight: 1
+      - path: IK Chain07
+        weight: 1
+      - path: IK Chain08
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -156,10 +272,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
