@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour {
 	public float ChaseSpeed = 1.0f;
 	public float TurnSpeed = 2.0f;
 	public float SightDistance = 10.0f;
-	//public float AttackDistance = 2.0f;
 	public float heightMultiplier = 1.5f;
 
 	public float PatrolTurnDistance = 7.0f;
@@ -32,7 +31,7 @@ public class Enemy : MonoBehaviour {
 	private bool isTurning = false;
 	private Quaternion qua_rotation;
 
-	private UnityEngine.AI.NavMeshAgent agent;
+	public UnityEngine.AI.NavMeshAgent agent;
 	private Rigidbody rigidBody;
 
 	public GameObject blood;
@@ -76,7 +75,6 @@ public class Enemy : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp(transform.rotation,qua_rotation,TurnSpeed*Time.deltaTime);
 			if(AlmostEqual(qua_rotation,transform.rotation,0.05f)){
 				isTurning = false;
-				Debug.Log ("turning false");
 			}
 		} else {
 			agent.speed = PatrolSpeed;
@@ -97,7 +95,6 @@ public class Enemy : MonoBehaviour {
 				target = hit.collider.gameObject;
 			} else if(hit.collider.tag == "wall"){
 				if(hit.distance < PatrolTurnDistance && !isTurning){
-					Debug.Log ("wall");
 					SetRandomTurning(120,240);
 				}
 			}
@@ -133,15 +130,6 @@ public class Enemy : MonoBehaviour {
 			state = State.PATROL;
 		}
 	}
-	/*
-	void Attack(){
-		Debug.Log ("attack");
-		animator.SetBool ("isAttacking", true);
-		if (Vector3.Distance (target.transform.position, transform.position) > AttackDistance) {
-			animator.SetBool("isAttacking", false);
-			state = State.CHASE;
-		}
-	}*/
 
 	public void Death(){
 		agent.Stop ();

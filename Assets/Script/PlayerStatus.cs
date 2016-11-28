@@ -33,5 +33,13 @@ public class PlayerStatus : MonoBehaviour {
 		return MaxHp;
 	}
 
+	void OnTriggerEnter(Collider collider){
+		Debug.Log ("trigger");
+		if (collider.tag == "enemy_attack") {
+			Debug.Log ("enemy_attack");
+
+			healthChange (-(collider.GetComponent<EnemySkill> ().damage));
+		}
+	}
 
 }
