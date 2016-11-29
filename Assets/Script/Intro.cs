@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Intro : MonoBehaviour {
 
-	public MovieTexture movie;
+	public GameObject Movie;
+	private MovieTexture movieTexutre;
 	private AudioSource audio;
 
 	private enum State{MOVIE_PLAYING, SELECT_UI};
@@ -15,11 +16,16 @@ public class Intro : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<RawImage> ().texture = movie as MovieTexture;
-		audio = GetComponent<AudioSource> ();
-		audio.clip = movie.audioClip;
-		movie.Play ();
-		audio.Play ();
+		btStart.onClick.AddListener (btStartClick);
+		btExit.onClick.AddListener (btExitClick);
+		btStart.enabled = false;
+		btExit.enabled = false;
+		movieTexutre = Movie.GetComponent<RawImage> ().texture as MovieTexture;
+		//Movie.GetComponent<RawImage> ().texture = movieTexutre as MovieTexture;
+		//audio = GetComponent<AudioSource> ();
+		//audio.clip = movieTexutre.audioClip;
+		movieTexutre.Play ();
+		//audio.Play ();
 		StartCoroutine ("IntroState");
 	}
 	
@@ -35,7 +41,7 @@ public class Intro : MonoBehaviour {
 				MoviePlaying ();
 				break;
 			case State.SELECT_UI:
-
+				SelectUI ();
 				break;
 			}
 			yield return null;
@@ -44,15 +50,24 @@ public class Intro : MonoBehaviour {
 
 	void MoviePlaying(){
 		if (Input.GetMouseButtonDown (0)) {
-			movie.Stop ();
-			audio.Stop ();
-			DestroyImmediate(movie,false);
+			movieTexutre.Stop ();
+			//audio.Stop ();
+			DestroyImmediate(Movie);
 			state = State.SELECT_UI;
-			//Application.LoadLevel (1);
 		}
 	}
 
 	void SelectUI(){
+		btStart.enabled = true;
+		btExit.enabled = true;
+	}
 
+	private void btStartClick(){
+		Application.LoadLevel (1);
+	}
+
+	private void btExitClick(){
+		Application.Quit ();
+		UnityEditor.EditorApplication.isPlaying = false;
 	}
 }
