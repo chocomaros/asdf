@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	public GameObject character;
+
 	// Use this for initialization
 	void Start () {
 		
