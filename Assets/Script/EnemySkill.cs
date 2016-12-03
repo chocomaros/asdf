@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySkill : MonoBehaviour {
 
 	public int damage;
+	public bool lasting;
+	public bool isDamaged = false;
 
 	// Use this for initialization
 	void Start () {

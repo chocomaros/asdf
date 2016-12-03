@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour {
 			mapPosition.x = 0;
 			mapPosition.z += 50;
 		}
-		GameObject.Find ("Room1").SetActive (false);
+		//GameObject.Find ("Room1").SetActive (false);
 	}
 
 	public Room GetCurrentRoom(){
