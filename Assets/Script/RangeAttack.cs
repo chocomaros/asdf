@@ -86,6 +86,6 @@ public class RangeAttack : IEnemyAttack {
 	}
 
 	private void setSkillDamage(int damage){
-		Skill.GetComponent<EnemySkill> ().damage = damage;
+		Skill.GetComponentInChildren<EnemySkill> ().damage = damage;
 	}
 }
