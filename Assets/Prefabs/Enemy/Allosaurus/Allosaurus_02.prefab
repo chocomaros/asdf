@@ -200,9 +200,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4139482410607078}
+  - component: {fileID: 136916506559273534}
   m_Layer: 0
   m_Name: Bone05
-  m_TagString: Untagged
+  m_TagString: enemy_head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1418,6 +1419,19 @@ CapsuleCollider:
   m_Height: 2.1378522
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!136 &136916506559273534
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271054249444626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.19463827
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.2, y: 0.1, z: 0}
 --- !u!137 &137774212983948818
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
