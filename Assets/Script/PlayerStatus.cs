@@ -7,6 +7,9 @@ public class PlayerStatus : MonoBehaviour {
 
 	public int MaxHp = 10;
 	private int hp;
+	public bool isPortalMoving = false;
+	public Portal.Position EntryPositon;
+	private bool isPaused = false;
 
 	// Use this for initialization
 	void Start () {
@@ -50,4 +53,21 @@ public class PlayerStatus : MonoBehaviour {
 		}
 	}
 
+
+	void OnTriggerStay(Collider collider){
+		if (collider.tag == "portal") {
+			if (Input.GetKey (KeyCode.E)) {
+				if (!isPaused) {
+					isPaused = true;
+					EntryPositon = collider.GetComponent<Portal> ().position;
+					isPortalMoving = true;
+					Invoke ("ReleasePause", 1f);
+				}
+			}
+		}
+	}
+
+	void ReleasePause(){
+		isPaused = false;
+	}
 }

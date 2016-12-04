@@ -12,6 +12,7 @@ TagManager:
   - background
   - Fire
   - enemy_attack
+  - portal
   layers:
   - Default
   - TransparentFX
