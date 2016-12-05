@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Intro : MonoBehaviour {
 
 	public GameObject Movie;
-	private MovieTexture movieTexutre;
+	public MovieTexture movieTexutre;
 	private AudioSource audio;
 
 	private enum State{MOVIE_PLAYING, SELECT_UI};

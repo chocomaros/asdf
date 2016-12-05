@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 446859833}
   - component: {fileID: 446859837}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: IntroCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movie: {fileID: 1499850422}
+  movieTexutre: {fileID: 0}
   btStart: {fileID: 1628958468}
   btExit: {fileID: 1904699611}
 --- !u!1 &740067907
@@ -685,7 +686,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 15200000, guid: 677d8f790cbef3f46a7e929783cef9e5, type: 3}
+  m_Texture: {fileID: 15200000, guid: 2d2159321632a324bb1f844960cfeeae, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
