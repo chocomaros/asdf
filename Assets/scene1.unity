@@ -856,6 +856,10 @@ Prefab:
       propertyPath: m_Name
       value: Minotaur (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 135260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
   m_IsPrefabParent: 0
@@ -1130,6 +1134,10 @@ Prefab:
     - target: {fileID: 135260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
       propertyPath: m_Name
       value: Minotaur (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 135260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
@@ -1460,10 +1468,10 @@ MonoBehaviour:
   connectedDown: 0
   connectedLeft: 0
   connectedRight: 0
-  portalUp: {fileID: 2038521406}
-  portalDown: {fileID: 1764354221}
-  portalLeft: {fileID: 570686344}
-  portalRight: {fileID: 2139766827}
+  portalUp: {fileID: 2038521405}
+  portalDown: {fileID: 1764354220}
+  portalLeft: {fileID: 570686343}
+  portalRight: {fileID: 2139766826}
   roomType: 1
 --- !u!1 &1252905341
 GameObject:
@@ -2074,6 +2082,10 @@ Prefab:
     - target: {fileID: 135260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
       propertyPath: m_Name
       value: Minotaur (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 135260, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54dd8ae60378d5143b14a2e5e6a8da1e, type: 2}

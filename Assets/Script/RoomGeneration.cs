@@ -6,7 +6,7 @@ public class RoomGeneration
 {
 
 	int[,] rooms;
-	int[] parents;
+	public int[] parents;
 
 	public RoomGeneration ()
 	{
@@ -34,6 +34,7 @@ public class RoomGeneration
 			}
 		}
 		parents = Prim (rooms, 9); 
+
 	}
 
 	public bool isConnected(int roomNum, int position){
@@ -93,7 +94,7 @@ public class RoomGeneration
 				}
 			}
 		}
-//		Print (parent, rooms, 9);
+		Print (parent, rooms, 9);
 		return parent;
 	}
 
