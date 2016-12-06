@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		RoomGeneration roomGen = new RoomGeneration ();
+		//roomGen.SetRoom ();
 		SetFloor ();
 		SetRoomEnable ();
 	}
