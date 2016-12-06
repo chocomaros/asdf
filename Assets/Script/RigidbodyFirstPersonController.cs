@@ -150,6 +150,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				desiredMove.x = desiredMove.x*movementSettings.CurrentTargetSpeed*(1-arrowShot.GetPower()*speedMultiplier);
 				desiredMove.z = desiredMove.z*movementSettings.CurrentTargetSpeed*(1-arrowShot.GetPower()*speedMultiplier);
 				desiredMove.y = desiredMove.y*movementSettings.CurrentTargetSpeed*(1-arrowShot.GetPower()*speedMultiplier);
+
                 if (m_RigidBody.velocity.sqrMagnitude <
 					(movementSettings.CurrentTargetSpeed*movementSettings.CurrentTargetSpeed*(1-arrowShot.GetPower()*speedMultiplier)))
                 {

@@ -135,6 +135,10 @@ public class Enemy : MonoBehaviour {
 		agent.Stop ();
 		animator.SetTrigger ("dead");
 		isAlive = false;
+		Debug.Log (GameObject.FindGameObjectsWithTag ("enemy").Length);
+		if (GameObject.FindGameObjectsWithTag ("enemy").Length == 1) {
+			GameObject.FindObjectOfType<GameManager> ().GetComponent<GameManager> ().CurrentPortalActive ();
+		}
 		Destroy (gameObject, 3f);
 	}
 
