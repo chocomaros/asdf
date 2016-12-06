@@ -219,10 +219,10 @@ public class GameManager : MonoBehaviour
 								floor [i, j - 1].GetComponent<Room> ().isPlayerHere = true;
 								floor [i, j].SetActive (false);
 								floor [i, j - 1].SetActive (true);
+								player.transform.position = floor [i, j - 1].GetComponent<Room> ().portalRight.transform.position;
 								if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
 									SetPortalActive (floor [i, j - 1], false);
 								}
-								player.transform.position = floor [i, j - 1].GetComponent<Room> ().portalRight.transform.position;
 							}
 							break;
 						case Portal.Position.RIGHT:
@@ -232,10 +232,10 @@ public class GameManager : MonoBehaviour
 								floor [i, j + 1].GetComponent<Room> ().isPlayerHere = true;
 								floor [i, j].SetActive (false);
 								floor [i, j + 1].SetActive (true);
-								if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
+								player.transform.position = floor [i, j + 1].GetComponent<Room> ().portalLeft.transform.position;
+								if (!floor [i, j + 1].GetComponent<Room> ().isVisited) {
 									SetPortalActive (floor [i, j + 1], false);
 								}
-								player.transform.position = floor [i, j + 1].GetComponent<Room> ().portalLeft.transform.position;
 							}
 							break;
 						case Portal.Position.UP:
@@ -245,10 +245,10 @@ public class GameManager : MonoBehaviour
 								floor [i - 1, j].GetComponent<Room> ().isPlayerHere = true;
 								floor [i, j].SetActive (false);
 								floor [i - 1, j].SetActive (true);
-								if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
+								player.transform.position = floor [i - 1, j].GetComponent<Room> ().portalDown.transform.position;
+								if (!floor [i - 1, j].GetComponent<Room> ().isVisited) {
 									SetPortalActive (floor [i - 1, j], false);
 								}
-								player.transform.position = floor [i - 1, j].GetComponent<Room> ().portalDown.transform.position;
 							}
 							break;
 						case Portal.Position.DOWN:
@@ -258,10 +258,10 @@ public class GameManager : MonoBehaviour
 								floor [i + 1, j].GetComponent<Room> ().isPlayerHere = true;
 								floor [i, j].SetActive (false);
 								floor [i + 1, j].SetActive (true);
-								if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
+								player.transform.position = floor [i + 1, j].GetComponent<Room> ().portalUp.transform.position;
+								if (!floor [i + 1, j].GetComponent<Room> ().isVisited) {
 									SetPortalActive (floor [i + 1, j], false);
 								}
-								player.transform.position = floor [i + 1, j].GetComponent<Room> ().portalUp.transform.position;
 							}
 							break;
 						}
