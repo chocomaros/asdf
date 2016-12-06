@@ -51,6 +51,7 @@ public class ArrowShoot : MonoBehaviour {
 					isMouseDown = false;
 					Aim.SetActive (false);
 					Invoke("arrowGUIOn",APPEAR_TIME);
+					power = 0;
 				}
 			}
 		} else {
@@ -63,5 +64,8 @@ public class ArrowShoot : MonoBehaviour {
 		Aim.transform.localScale = new Vector3 (1, 1, 0);
 		Aim.SetActive (true);
 		isAppear = true;
+	}
+	public float GetPower(){
+		return power;
 	}
 }
