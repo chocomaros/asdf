@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
 	public GameObject player;
+	public GameObject miniMapOrigin;
+	public GameObject roomNone;
+	public GameObject room1;
 	private GameObject[,] floor;
 	private bool isSettingEnd;
+	private GameObject[,] miniMap;
 
 	// Use this for initialization
 	void Start ()
@@ -29,6 +34,10 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log ("setFloor");
 		isSettingEnd = false;
+		//GameObject.Find ("Room1").SetActive (true);
+		//GameObject.Find ("RoomNone").SetActive (true);
+		room1.SetActive(true);
+		roomNone.SetActive (true);
 
 		Room[,] rooms = new Room[4, 3];
 		rooms [0, 0] = new Room (Room.RoomType.NONE);
@@ -43,9 +52,13 @@ public class GameManager : MonoBehaviour
 
 		floor = new GameObject[4, 3];
 		InstantiateRoom (rooms);
+		InitMap ();
 
-		GameObject.Find ("Room1").SetActive (false);
-		GameObject.Find ("RoomNone").SetActive (false);
+//		GameObject.Find ("Room1").SetActive (false);
+//		GameObject.Find ("RoomNone").SetActive (false);
+		room1.SetActive(false);
+		roomNone.SetActive (false);
+
 		floor [3, 1].GetComponent<Room> ().isPlayerHere = true;
 		SetPortalActive (floor [3, 1], false);
 		player.GetComponent<PlayerStatus> ().EntryPositon = Portal.Position.UP;
@@ -54,11 +67,12 @@ public class GameManager : MonoBehaviour
 		SetRoomEnable ();
 	}
 
-	GameObject GetCurrentRoom(){
+	GameObject GetCurrentRoom ()
+	{
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 3; j++) {
-				if (floor [i,j].GetComponent<Room>().isPlayerHere) {
-					return floor [i,j];
+				if (floor [i, j].GetComponent<Room> ().isPlayerHere) {
+					return floor [i, j];
 				}
 			}
 		}
@@ -121,30 +135,31 @@ public class GameManager : MonoBehaviour
 				}
 				switch (rooms [i, j].roomType) {
 				case (Room.RoomType.ROOM1): 
-					floor [i, j] = Instantiate (GameObject.Find ("Room1"));
+//					floor [i, j] = Instantiate (GameObject.Find ("Room1"));
+					floor [i, j] = Instantiate (room1);
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.BOSS):
-					floor [i, j] = Instantiate (GameObject.Find ("Room1"));
+//					floor [i, j] = Instantiate (GameObject.Find ("Room1"));
+					floor [i, j] = Instantiate (room1);
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.NONE):
-					floor [i, j] = Instantiate (GameObject.Find ("RoomNone"));
+//					floor [i, j] = Instantiate (GameObject.Find ("RoomNone"));
+					floor [i, j] = Instantiate (roomNone);
 					break;
 				}
-				if (i > 0) {
-					if (rooms [i - 1, j].connectedDown) {
-						floor [i, j].GetComponent<Room> ().connectedDown = true;
-					}
-					if (rooms [i - 1, j].connectedUp) {
-						floor [i, j].GetComponent<Room> ().connectedUp = true;
-					}
-					if (rooms [i - 1, j].connectedLeft) {
-						floor [i, j].GetComponent<Room> ().connectedLeft = true;
-					}
-					if (rooms [i - 1, j].connectedRight) {
-						floor [i, j].GetComponent<Room> ().connectedRight = true;
-					}
+				if (rooms [i, j].connectedDown) {
+					floor [i, j].GetComponent<Room> ().connectedDown = true;
+				}
+				if (rooms [i, j].connectedUp) {
+					floor [i, j].GetComponent<Room> ().connectedUp = true;
+				}
+				if (rooms [i, j].connectedLeft) {
+					floor [i, j].GetComponent<Room> ().connectedLeft = true;
+				}
+				if (rooms [i, j].connectedRight) {
+					floor [i, j].GetComponent<Room> ().connectedRight = true;
 				}
 
 				mapPosition.x += Room.mapLengthX;
@@ -170,7 +185,7 @@ public class GameManager : MonoBehaviour
 
 	public void CurrentPortalActive ()
 	{
-		SetPortalActive (GetCurrentRoom(), true);
+		SetPortalActive (GetCurrentRoom (), true);
 	}
 
 	void SetPortalActive (GameObject floor, bool activation)
@@ -196,8 +211,49 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	void InitMap ()
+	{
+		miniMapOrigin.SetActive (true);
+		miniMap = new GameObject[4, 3];
+		Vector3 mapLocalPosition = new Vector3 (0, 0, 0);
+//		GameObject map = GameObject.Find ("Mini Map");
+		GameObject mapPosition = GameObject.Find ("Map Position");
+		int x = 25, y = 16;
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (floor [i, j].GetComponent<Room> ().roomType != Room.RoomType.NONE) {
+					miniMap [i, j] = Instantiate (miniMapOrigin, mapPosition.transform);
+					miniMap [i, j].transform.localPosition = mapLocalPosition;
+				}
+				mapLocalPosition.x += x;
+			}
+			mapLocalPosition.x = 0;
+			mapLocalPosition.y -= y;
+		}
+		miniMapOrigin.SetActive (false);
+	}
+
+	void SetMapColor ()
+	{
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (floor [i, j].GetComponent<Room> ().roomType != Room.RoomType.NONE) {
+					Debug.Log ("i : " + i + " j : " + j);
+					miniMap [i, j].GetComponent<Image> ().color = Color.black;
+					if (floor [i, j].GetComponent<Room> ().isVisited) {
+						miniMap [i, j].GetComponent<Image> ().color = Color.gray;
+					}
+					if (floor [i, j].GetComponent<Room> ().isPlayerHere) {
+						miniMap [i, j].GetComponent<Image> ().color = Color.white;
+					}
+				}
+			}
+		}
+	}
+
 	void MovePlayerPosition (Portal.Position entryPosition)
 	{
+		bool nextLevel = false;
 		if (!isSettingEnd) {
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 3; j++) {
@@ -239,7 +295,11 @@ public class GameManager : MonoBehaviour
 							}
 							break;
 						case Portal.Position.UP:
-							if (i > 0) {
+							if (i == 0) {
+								nextLevel = true;
+								break;
+							}
+							else if (i > 0) {
 								floor [i, j].GetComponent<Room> ().isVisited = true;
 								floor [i, j].GetComponent<Room> ().isPlayerHere = false;
 								floor [i - 1, j].GetComponent<Room> ().isPlayerHere = true;
@@ -269,6 +329,16 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
-
+		if (!nextLevel) {
+			SetMapColor ();
+		} else {
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 3; j++) {
+					DestroyImmediate (floor [i, j]);
+					DestroyImmediate (miniMap [i, j]);
+				}
+			}
+			SetFloor ();
+		}
 	}
 }
