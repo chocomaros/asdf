@@ -39,22 +39,25 @@ public class ArrowMoveVector : MonoBehaviour {
 					collider.GetComponent<Enemy> ().BloodEffect (arrow.transform);
 					if (collider.GetComponent<Enemy> ().HP <= 0) {
 						collider.GetComponent<Enemy> ().state = Enemy.State.DEATH;
+						//요 아래가 시체통과
+						collider.GetComponent<Rigidbody> ().isKinematic = true;
+						collider.GetComponent<Rigidbody> ().useGravity = false;
+						Collider[] colliders = collider.GetComponentsInChildren<Collider>();
+
+						for (int collider_i = 0; collider_i < colliders.Length;collider_i++) {
+							colliders [collider_i].isTrigger = true;
+						}
+						colliders = collider.GetComponents<Collider>();
+						for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
+							colliders [collider_i].isTrigger = true;
+						}
 					} else {
 						collider.GetComponent<Enemy> ().animator.SetTrigger ("hit");
 						collider.GetComponent<Enemy> ().HitTurn (arrow.transform.position);
+
 					}
 					Debug.Log ("enemy");
-					collider.GetComponent<Rigidbody> ().isKinematic = true;
-					collider.GetComponent<Rigidbody> ().useGravity = false;
-					Collider[] colliders = collider.GetComponentsInChildren<Collider>();
-					
-					for (int collider_i = 0; collider_i < colliders.Length;collider_i++) {
-						colliders [collider_i].isTrigger = true;
-					}
-					colliders = collider.GetComponents<Collider>();
-					for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
-						colliders [collider_i].isTrigger = true;
-					}
+
 					Destroy (gameObject, 3f);
 				}
 			} else if (collider.transform.tag == "enemy_head") {
@@ -65,22 +68,24 @@ public class ArrowMoveVector : MonoBehaviour {
 					collider.GetComponentInParent<Enemy> ().BloodEffect (arrow.transform);
 					if (collider.GetComponentInParent<Enemy> ().HP <= 0) {
 						collider.GetComponentInParent<Enemy> ().state = Enemy.State.DEATH;
+						//요 아래가 시체통과
+						collider.GetComponentInParent<Rigidbody> ().isKinematic = true;
+						collider.GetComponentInParent<Rigidbody> ().useGravity = false;
+						Collider[] colliders = 
+							collider.GetComponentInParent<Rigidbody> ().GetComponentsInChildren<Collider>();
+						for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
+							colliders [collider_i].isTrigger = true;
+						}
+						colliders = collider.GetComponentInParent<Rigidbody> ().GetComponents<Collider>();
+						for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
+							colliders [collider_i].isTrigger = true;
+						}
 					} else {
 						collider.GetComponentInParent<Enemy> ().animator.SetTrigger ("hit");
 						collider.GetComponentInParent<Enemy> ().HitTurn (arrow.transform.position);
 					}
 					Debug.Log ("enemy head");
-					collider.GetComponentInParent<Rigidbody> ().isKinematic = true;
-					collider.GetComponentInParent<Rigidbody> ().useGravity = false;
-					Collider[] colliders = 
-						collider.GetComponentInParent<Rigidbody> ().GetComponentsInChildren<Collider>();
-					for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
-						colliders [collider_i].isTrigger = true;
-					}
-					colliders = collider.GetComponentInParent<Rigidbody> ().GetComponents<Collider>();
-					for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
-						colliders [collider_i].isTrigger = true;
-					}
+
 					Destroy (gameObject, 3f);
 				}
 			} else if (collider.transform.tag == "enemy_attack") {
