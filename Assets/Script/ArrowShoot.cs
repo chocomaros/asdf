@@ -8,7 +8,7 @@ public class ArrowShoot : MonoBehaviour {
 	public Transform arrowPosition;
 	public Transform tCamera;
 	public GameObject Aim;
-
+	private Vector3 arrowOrigin;
 	private const float MAX_POWER = 0.5f;
 	private const float POWER_INCREASE_UNIT = 0.005f;
 	private const float APPEAR_TIME = 0.8f; // 1초
@@ -19,6 +19,7 @@ public class ArrowShoot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		arrowOrigin = Vector3.zero + arrow.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +38,9 @@ public class ArrowShoot : MonoBehaviour {
 							scale = 0.1f;
 						} else {
 							Aim.transform.localScale = new Vector3(scale,scale,0);
+							arrow.transform.Translate (-arrow.transform.forward/450);
 						}
+
 					} 
 				}
 			}
@@ -52,6 +55,7 @@ public class ArrowShoot : MonoBehaviour {
 					Aim.SetActive (false);
 					Invoke("arrowGUIOn",APPEAR_TIME);
 					power = 0;
+					arrow.transform.position = arrowOrigin;
 				}
 			}
 		} else {
