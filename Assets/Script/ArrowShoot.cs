@@ -22,7 +22,7 @@ public class ArrowShoot : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (isAppear) {
 			if(Input.GetMouseButtonDown(0)){
 				isMouseDown = true;

@@ -44,12 +44,23 @@ public class ArrowMoveVector : MonoBehaviour {
 						collider.GetComponent<Enemy> ().HitTurn (arrow.transform.position);
 					}
 					Debug.Log ("enemy");
+					collider.GetComponent<Rigidbody> ().isKinematic = true;
+					collider.GetComponent<Rigidbody> ().useGravity = false;
+					Collider[] colliders = collider.GetComponentsInChildren<Collider>();
+					
+					for (int collider_i = 0; collider_i < colliders.Length;collider_i++) {
+						colliders [collider_i].isTrigger = true;
+					}
+					colliders = collider.GetComponents<Collider>();
+					for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
+						colliders [collider_i].isTrigger = true;
+					}
 					Destroy (gameObject, 3f);
 				}
 			} else if (collider.transform.tag == "enemy_head") {
 				if (movingOn) {
 					arrow.parent = collider.transform;
-                   
+					
 					collider.GetComponentInParent<Enemy> ().HP -= 2 * 50 * power;
 					collider.GetComponentInParent<Enemy> ().BloodEffect (arrow.transform);
 					if (collider.GetComponentInParent<Enemy> ().HP <= 0) {
@@ -59,6 +70,17 @@ public class ArrowMoveVector : MonoBehaviour {
 						collider.GetComponentInParent<Enemy> ().HitTurn (arrow.transform.position);
 					}
 					Debug.Log ("enemy head");
+					collider.GetComponentInParent<Rigidbody> ().isKinematic = true;
+					collider.GetComponentInParent<Rigidbody> ().useGravity = false;
+					Collider[] colliders = 
+						collider.GetComponentInParent<Rigidbody> ().GetComponentsInChildren<Collider>();
+					for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
+						colliders [collider_i].isTrigger = true;
+					}
+					colliders = collider.GetComponentInParent<Rigidbody> ().GetComponents<Collider>();
+					for (int collider_i = 0; collider_i < colliders.Length; collider_i++) {
+						colliders [collider_i].isTrigger = true;
+					}
 					Destroy (gameObject, 3f);
 				}
 			} else if (collider.transform.tag == "enemy_attack") {
