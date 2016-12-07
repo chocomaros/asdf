@@ -47,7 +47,6 @@ public class PlayerStatus : MonoBehaviour
 
 	void OnTriggerEnter (Collider collider)
 	{
-		Debug.Log ("trigger");
 		if (collider.tag == "enemy_attack") {
 			if (collider.GetComponent<EnemySkill> ().lasting) {
 				healthChange (-(collider.GetComponent<EnemySkill> ().damage));

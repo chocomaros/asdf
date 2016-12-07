@@ -2015,6 +2015,8 @@ MonoBehaviour:
   animator: {fileID: 95544836396651880}
   agent: {fileID: 195718470639671498}
   blood: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 2}
+  DropItems:
+  - {fileID: 1663127665805662, guid: f1a431a6e41a1ea498306c34de8cb6fc, type: 2}
 --- !u!114 &114877179686615814
 MonoBehaviour:
   m_ObjectHideFlags: 1

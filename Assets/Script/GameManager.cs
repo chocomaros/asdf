@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 
 	public GameObject player;
 	public GameObject miniMapOrigin;
-	public GameObject roomNone;
-	public GameObject room1;
+	public List<GameObject> RoomObjects; // 0:None, 1:Boss, 2:room1
 	private GameObject[,] floor;
 	private bool isSettingEnd;
 	private GameObject[,] miniMap;
@@ -34,10 +33,10 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log ("setFloor");
 		isSettingEnd = false;
-		//GameObject.Find ("Room1").SetActive (true);
-		//GameObject.Find ("RoomNone").SetActive (true);
-		room1.SetActive(true);
-		roomNone.SetActive (true);
+
+		for (int i = 0; i < RoomObjects.Count; i++) {
+			RoomObjects [i].SetActive (true);
+		}
 
 		Room[,] rooms = new Room[4, 3];
 		rooms [0, 0] = new Room (Room.RoomType.NONE);
@@ -54,10 +53,9 @@ public class GameManager : MonoBehaviour
 		InstantiateRoom (rooms);
 		InitMap ();
 
-//		GameObject.Find ("Room1").SetActive (false);
-//		GameObject.Find ("RoomNone").SetActive (false);
-		room1.SetActive(false);
-		roomNone.SetActive (false);
+		for (int i = 0; i < RoomObjects.Count; i++) {
+			RoomObjects [i].SetActive (false);
+		}
 
 		floor [3, 1].GetComponent<Room> ().isPlayerHere = true;
 		SetPortalActive (floor [3, 1], false);
@@ -135,18 +133,15 @@ public class GameManager : MonoBehaviour
 				}
 				switch (rooms [i, j].roomType) {
 				case (Room.RoomType.ROOM1): 
-//					floor [i, j] = Instantiate (GameObject.Find ("Room1"));
-					floor [i, j] = Instantiate (room1);
+					floor[i,j] = Instantiate(RoomObjects[1]);
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.BOSS):
-//					floor [i, j] = Instantiate (GameObject.Find ("Room1"));
-					floor [i, j] = Instantiate (room1);
+					floor [i, j] = Instantiate (RoomObjects[1]);
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.NONE):
-//					floor [i, j] = Instantiate (GameObject.Find ("RoomNone"));
-					floor [i, j] = Instantiate (roomNone);
+					floor[i,j] = Instantiate(RoomObjects[0]);
 					break;
 				}
 				if (rooms [i, j].connectedDown) {
@@ -216,7 +211,6 @@ public class GameManager : MonoBehaviour
 		miniMapOrigin.SetActive (true);
 		miniMap = new GameObject[4, 3];
 		Vector3 mapLocalPosition = new Vector3 (0, 0, 0);
-//		GameObject map = GameObject.Find ("Mini Map");
 		GameObject mapPosition = GameObject.Find ("Map Position");
 		int x = 25, y = 16;
 		for (int i = 0; i < 4; i++) {
@@ -238,7 +232,6 @@ public class GameManager : MonoBehaviour
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 3; j++) {
 				if (floor [i, j].GetComponent<Room> ().roomType != Room.RoomType.NONE) {
-					Debug.Log ("i : " + i + " j : " + j);
 					miniMap [i, j].GetComponent<Image> ().color = Color.black;
 					if (floor [i, j].GetComponent<Room> ().isVisited) {
 						miniMap [i, j].GetComponent<Image> ().color = Color.gray;

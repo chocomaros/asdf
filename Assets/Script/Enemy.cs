@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour {
 
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour {
 	private Rigidbody rigidBody;
 
 	public GameObject blood;
+	public List<GameObject> DropItems;
 
 	// Use this for initialization
 	void Start () {
@@ -135,11 +137,16 @@ public class Enemy : MonoBehaviour {
 		agent.Stop ();
 		animator.SetTrigger ("dead");
 		isAlive = false;
-		Debug.Log (GameObject.FindGameObjectsWithTag ("enemy").Length);
+		int random = Random.Range (0, 4);
+		Debug.Log (random);
+		Debug.Log (DropItems.Count);
+		if (random < DropItems.Count) {
+			Instantiate (DropItems [random], transform.position, Quaternion.identity);
+		}
 		if (GameObject.FindGameObjectsWithTag ("enemy").Length == 1) {
 			GameObject.FindObjectOfType<GameManager> ().GetComponent<GameManager> ().CurrentPortalActive ();
 		}
-		Destroy (gameObject, 3f);
+		Destroy (gameObject, 2f);
 	}
 
 	void SetRandomTurning(int min, int max){
