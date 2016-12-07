@@ -59,7 +59,9 @@ public class PlayerStatus : MonoBehaviour
 			Debug.Log ("enemy_attack");
 			Debug.Log ("damage : " + collider.GetComponent<EnemySkill> ().damage);
 
-		} else if (collider.tag == "portal" || collider.tag == "potion") {
+		} else if (collider.tag == "portal" ||
+				collider.tag == "potion"||
+				collider.tag=="item_box") {
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 		}
 	}
@@ -89,12 +91,24 @@ public class PlayerStatus : MonoBehaviour
 				}
 
 			}
+		} else if (collider.tag == "item_box") {
+			if (Input.GetKey (KeyCode.E)) {
+				if (!isPaused) {
+					isPaused = true;
+					collider.GetComponent<ItemBoxScript> ().DestoryBox ();
+					GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
+					Invoke ("ReleasePause", 1f);
+				}
+
+			}
 		}
 	}
 
 	void OnTriggerExit (Collider collider)
 	{
-		if (collider.tag == "portal" || collider.tag == "potion") {
+		 if (collider.tag == "portal" ||
+			collider.tag == "potion"||
+			collider.tag=="item_box") {
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 		}
 	}
