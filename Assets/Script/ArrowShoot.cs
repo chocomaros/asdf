@@ -23,7 +23,22 @@ public class ArrowShoot : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate(){
+		if (isAppear) {
+			if (Input.GetMouseButtonDown (0)) {
+				isMouseDown = true;
+				power = POWER_INCREASE_UNIT;
+			}
+			if(Input.GetMouseButton(0)){
+				if (isMouseDown) {
+					if(power <= MAX_POWER - POWER_INCREASE_UNIT){
+						power += POWER_INCREASE_UNIT;
+					} 
+				}
+			}
+		}
+	}
+	void Update () {
 		if (isAppear) {
 			if(Input.GetMouseButtonDown(0)){
 				isMouseDown = true;
@@ -32,7 +47,7 @@ public class ArrowShoot : MonoBehaviour {
 			if(Input.GetMouseButton(0)){
 				if (isMouseDown) {
 					if(power <= MAX_POWER - POWER_INCREASE_UNIT){
-						power += POWER_INCREASE_UNIT;
+						//power += POWER_INCREASE_UNIT;
 						float scale = 1 - (power / (float)MAX_POWER);
 						if (scale < 0.1f) {
 							scale = 0.1f;
