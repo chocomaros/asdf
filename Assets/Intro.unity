@@ -686,7 +686,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 15200000, guid: 2d2159321632a324bb1f844960cfeeae, type: 3}
+  m_Texture: {fileID: 15200000, guid: aed45cd7b3c04f449a26027f90869a34, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

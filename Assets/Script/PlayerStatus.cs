@@ -50,9 +50,10 @@ public class PlayerStatus : MonoBehaviour {
 			Debug.Log ("enemy_attack");
 			Debug.Log ("damage : " + collider.GetComponent<EnemySkill> ().damage);
 
+		} else if (collider.tag == "portal") {
+			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 		}
 	}
-
 
 	void OnTriggerStay(Collider collider){
 		if (collider.tag == "portal") {
@@ -61,9 +62,16 @@ public class PlayerStatus : MonoBehaviour {
 					isPaused = true;
 					EntryPositon = collider.GetComponent<Portal> ().position;
 					isPortalMoving = true;
+					GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 					Invoke ("ReleasePause", 1f);
 				}
 			}
+		}
+	}
+
+	void OnTriggerExit(Collider collider){
+		if (collider.tag == "portal") {
+			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 		}
 	}
 
