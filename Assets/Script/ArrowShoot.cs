@@ -38,7 +38,7 @@ public class ArrowShoot : MonoBehaviour {
 							scale = 0.1f;
 						} else {
 							Aim.transform.localScale = new Vector3(scale,scale,0);
-							arrow.transform.Translate (-arrow.transform.forward/450);
+							arrow.transform.position =(arrowOrigin-arrow.transform.forward*power/2);
 						}
 
 					} 
