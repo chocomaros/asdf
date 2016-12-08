@@ -27,8 +27,12 @@ public class PlayerStatus : MonoBehaviour
 	public void healthChange (int changedHp)
 	{
 		this.hp += changedHp;
-		if (hp < 0)
+		if (hp < 0) {
 			hp = 0;
+		}
+		if (hp > MaxHp) {
+			hp = MaxHp;
+		}
 		float hpRate = hp / (float)MaxHp;
 		Color c = GameObject.FindGameObjectWithTag ("background").GetComponent<Image> ().color;
 		c.a = 0.5f - 0.5f * hpRate;
