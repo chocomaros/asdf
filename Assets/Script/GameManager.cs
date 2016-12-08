@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public GameObject player;
 	public GameObject miniMapOrigin;
 	public List<GameObject> RoomObjects;
+	public List<GameObject> Enemies;
 	// 0:None, 1:Boss, 2:room1
 	private GameObject[,] floor;
 	private bool isSettingEnd;
@@ -159,6 +160,8 @@ public class GameManager : MonoBehaviour
 				if (rooms [i, j].connectedRight) {
 					floor [i, j].GetComponent<Room> ().connectedRight = true;
 				}
+
+				SetEnemyGeneration (floor [i, j]);
 
 				Component[] enemies = floor [i, j].GetComponentsInChildren<Enemy> ();
 				foreach (Enemy enemy in enemies) {
@@ -339,6 +342,40 @@ public class GameManager : MonoBehaviour
 				}
 			}
 			SetFloor ();
+		}
+	}
+
+	private void SetEnemyGeneration(GameObject room){
+		int enemiesCount = Random.Range (3, 6);
+		Vector3[] position = new Vector3[enemiesCount];
+		int[] randPosition = new int[enemiesCount];
+		for (int i = 0; i < enemiesCount; i++) {
+			bool check = false;
+
+			while (!check) {
+				int random = Random.Range (0, 10);
+				if (i == 0) {
+					randPosition [i] = random;
+					check = true;
+				} else {
+					for (int j = 0; j < i; j++) {
+						if (random == randPosition [j]) {
+							break;
+						}
+						if (random != randPosition [j] && j == i -1) {
+							randPosition [i] = random;
+							check = true;
+						}
+					}
+				}
+			}
+			int x = randPosition [i] / 3;
+			int z = randPosition [i] % 3;
+			x = (x - 1) * 10;
+			z = (z - 1) * 10;
+			position [i] = new Vector3 (x, 0, z);
+			GameObject enemy = Instantiate (Enemies[Random.Range(0,Enemies.Count)], new Vector3(), Quaternion.Euler(0,Random.Range(0,180),0) , room.transform);
+			enemy.transform.localPosition = position [i];
 		}
 	}
 

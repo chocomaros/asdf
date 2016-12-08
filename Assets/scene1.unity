@@ -185,85 +185,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1461620667861498, guid: 86dd5f60103a36343954b1e93183a3f2,
     type: 2}
   m_PrefabInternal: {fileID: 1507624784}
---- !u!224 &211392213 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224981803686486164, guid: 6a610a932f98ad345a013dbf8ff9ced8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1504473989}
---- !u!1 &297971660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 297971661}
-  - component: {fileID: 297971663}
-  - component: {fileID: 297971662}
-  m_Layer: 5
-  m_Name: Level Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &297971661
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 297971660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 211392213}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 389}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0}
---- !u!114 &297971662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 297971660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 7
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Floor :'
---- !u!222 &297971663
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 297971660}
 --- !u!1 &413388202
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +395,9 @@ MonoBehaviour:
   RoomObjects:
   - {fileID: 1893047613938722, guid: ee39b9fcca7eee6419ff25770c631924, type: 2}
   - {fileID: 1271684188333816, guid: ce1dc9fbdcc19e440b956980e02207d5, type: 2}
+  Enemies:
+  - {fileID: 1992794750802258, guid: 4854998a2b038c84190fe3555136487c, type: 2}
+  - {fileID: 1092059573346610, guid: fdc68eaa1c7dcd442a97f39c188b20a7, type: 2}
 --- !u!4 &902524919
 Transform:
   m_ObjectHideFlags: 0
