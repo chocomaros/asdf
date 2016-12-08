@@ -63,9 +63,11 @@ public class PlayerStatus : MonoBehaviour
 			Debug.Log ("enemy_attack");
 			Debug.Log ("damage : " + collider.GetComponent<EnemySkill> ().damage);
 
-		} else if (collider.tag == "portal" ||
-				collider.tag == "potion"||
-				collider.tag=="item_box") {
+		} else if (collider.tag == "potion" ||
+		           collider.tag == "item_box") {
+			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
+		} else if (collider.tag == "portal") {
+			gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Teleport);
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 		}
 	}
@@ -88,6 +90,7 @@ public class PlayerStatus : MonoBehaviour
 					isPaused = true;
 					if (hp < MaxHp) {
 						healthChange (1);
+						gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Heal);
 						Destroy(collider.gameObject);
 						GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 					}

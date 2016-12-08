@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 92260765611162392}
   - component: {fileID: 124275548645907966}
   - component: {fileID: 81407242603072374}
+  - component: {fileID: 114144477454713594}
+  - component: {fileID: 82317949803173196}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -276,6 +278,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045415515779198}
   m_Enabled: 1
+--- !u!82 &82317949803173196
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045415515779198}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &92260765611162392
 Behaviour:
   m_ObjectHideFlags: 1
@@ -295,6 +377,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 0}
+--- !u!114 &114144477454713594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045415515779198}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e078d608cf52bbb4ea288f86a94de398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 82317949803173196}
+  NormalRoomMusic: {fileID: 0}
+  BossRoomMusic: {fileID: 0}
 --- !u!114 &114198124336340822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,9 +414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 0}
-  arrowGUI: {fileID: 0}
-  arrowPosition: {fileID: 0}
-  tCamera: {fileID: 0}
+  arrowGUI: {fileID: 114019713532819064}
+  arrowPosition: {fileID: 4134894033673806}
+  tCamera: {fileID: 4705924549374944}
   Aim: {fileID: 0}
 --- !u!114 &114218773506945816
 MonoBehaviour:
@@ -334,6 +430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 10
+  isPortalMoving: 0
+  EntryPositon: 0
 --- !u!114 &114455191306772414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,12 +445,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 20550931478341634}
   movementSettings:
-    ForwardSpeed: 8
-    BackwardSpeed: 4
-    StrafeSpeed: 4
-    RunMultiplier: 2
+    ForwardSpeed: 4
+    BackwardSpeed: 2
+    StrafeSpeed: 2
+    RunMultiplier: 1
     RunKey: 304
-    JumpForce: 30
+    JumpForce: 4
     SlopeCurveModifier:
       serializedVersion: 2
       m_Curve:
@@ -393,6 +491,7 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+  arrowShot: {fileID: 114199362314095370}
 --- !u!114 &114778252297489600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -404,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dc543f3edf0b04591d8175a5c973ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CC: {fileID: 0}
+  CC: {fileID: 143229708825068774}
 --- !u!124 &124275548645907966
 Behaviour:
   m_ObjectHideFlags: 1

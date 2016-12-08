@@ -138,14 +138,17 @@ public class GameManager : MonoBehaviour
 				switch (rooms [i, j].roomType) {
 				case (Room.RoomType.ROOM1): 
 					floor [i, j] = Instantiate (RoomObjects [1]);
+					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.ROOM1;
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.BOSS):
 					floor [i, j] = Instantiate (RoomObjects [1]);
+					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.BOSS;
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.NONE):
 					floor [i, j] = Instantiate (RoomObjects [0]);
+					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.NONE;
 					break;
 				}
 				if (rooms [i, j].connectedDown) {
@@ -264,6 +267,7 @@ public class GameManager : MonoBehaviour
 				for (int j = 0; j < 3; j++) {
 					if (floor [i, j].GetComponent<Room> ().isPlayerHere) {
 						player.transform.position = floor [i, j].GetComponent<Room> ().portalDown.transform.position;
+						player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j].GetComponent<Room> ().roomType);
 					}
 				}
 			}
@@ -283,6 +287,7 @@ public class GameManager : MonoBehaviour
 									floor [i, j - 1].SetActive (true);
 									isMoved = true;
 									player.transform.position = floor [i, j - 1].GetComponent<Room> ().portalRight.transform.position;
+									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j - 1].GetComponent<Room> ().roomType);
 									if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
 										SetPortalActive (floor [i, j - 1], false);
 									}
@@ -297,6 +302,7 @@ public class GameManager : MonoBehaviour
 									floor [i, j + 1].SetActive (true);
 									isMoved = true;
 									player.transform.position = floor [i, j + 1].GetComponent<Room> ().portalLeft.transform.position;
+									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j + 1].GetComponent<Room> ().roomType);
 									if (!floor [i, j + 1].GetComponent<Room> ().isVisited) {
 										SetPortalActive (floor [i, j + 1], false);
 									}
@@ -314,6 +320,7 @@ public class GameManager : MonoBehaviour
 									floor [i - 1, j].SetActive (true);
 									isMoved = true;
 									player.transform.position = floor [i - 1, j].GetComponent<Room> ().portalDown.transform.position;
+									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i - 1, j].GetComponent<Room> ().roomType);
 									if (!floor [i - 1, j].GetComponent<Room> ().isVisited) {
 										SetPortalActive (floor [i - 1, j], false);
 									}
@@ -327,6 +334,7 @@ public class GameManager : MonoBehaviour
 									floor [i, j].SetActive (false);
 									floor [i + 1, j].SetActive (true);
 									player.transform.position = floor [i + 1, j].GetComponent<Room> ().portalUp.transform.position;
+									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i + 1, j].GetComponent<Room> ().roomType);
 									if (!floor [i + 1, j].GetComponent<Room> ().isVisited) {
 										SetPortalActive (floor [i + 1, j], false);
 									}
