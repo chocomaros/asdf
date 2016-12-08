@@ -26,6 +26,12 @@ public class PlayerStatus : MonoBehaviour
 
 	public void healthChange (int changedHp)
 	{
+		if (changedHp > 0) {
+			gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Heal);
+		} else if (changedHp < 0) {
+			gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Hurt);
+		}
+
 		this.hp += changedHp;
 		if (hp < 0) {
 			hp = 0;
@@ -90,7 +96,6 @@ public class PlayerStatus : MonoBehaviour
 					isPaused = true;
 					if (hp < MaxHp) {
 						healthChange (1);
-						gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Heal);
 						Destroy(collider.gameObject);
 						GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 					}

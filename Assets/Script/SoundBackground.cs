@@ -23,10 +23,14 @@ public class SoundBackground : MonoBehaviour {
 
 	public void SetBackgroundMusic(Room.RoomType roomType){
 		if (roomType == Room.RoomType.BOSS) {
-			Audio.PlayOneShot (BossRoomMusic);
+			Audio.Stop ();
+			Audio.clip = BossRoomMusic;
+			Audio.Play();
 		} else {
 			if (!Audio.clip.Equals (NormalRoomMusic)) {
-				Audio.PlayOneShot (NormalRoomMusic);
+				Audio.Stop ();
+				Audio.clip = NormalRoomMusic;
+				Audio.Play();
 			}
 		}
 	}

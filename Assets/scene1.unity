@@ -370,7 +370,7 @@ Prefab:
         type: 2}
       propertyPath: BossRoomMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 73fc45c8ec623ff408b3cfb5980e70c2, type: 3}
+      objectReference: {fileID: 8300000, guid: 8372ed1379c323f49846ad3b5f8d8a3f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42e68965bfcee734b99db4ef9638a449, type: 2}
   m_IsPrefabParent: 0
@@ -554,6 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Heal: {fileID: 8300000, guid: 30adc13a94031e643bdd348500a4e47e, type: 3}
   Teleport: {fileID: 8300000, guid: 636fb34ae2383d94390ecf8a7b955cda, type: 3}
+  Hurt: {fileID: 8300000, guid: de06f8ee5d75eec46bfe4fdd652948c0, type: 3}
   Audio: {fileID: 1754005372}
 --- !u!82 &1754005372
 AudioSource:

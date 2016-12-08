@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour {
 
-	public enum SpeakType{Heal,Teleport};
+	public enum SpeakType{Heal,Teleport,Hurt};
 
 	public AudioClip Heal;
 	public AudioClip Teleport;
+	public AudioClip Hurt;
 
 	public AudioSource Audio;
 
@@ -26,6 +27,8 @@ public class SoundPlayer : MonoBehaviour {
 			Audio.PlayOneShot (Heal);
 		} else if (speakType == SpeakType.Teleport) {
 			Audio.PlayOneShot (Teleport);
+		} else if (speakType == SpeakType.Hurt) {
+			Audio.PlayOneShot (Hurt);
 		}
 	}
 }

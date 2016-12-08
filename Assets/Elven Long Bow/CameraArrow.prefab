@@ -453,8 +453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16383d5e0a8a50428a01b07c756c69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
-  audio: {fileID: 82872873998341010}
+  Hit: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
+  HeadShot: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
+  Audio: {fileID: 82872873998341010}
 --- !u!114 &114445360884800694
 MonoBehaviour:
   m_ObjectHideFlags: 1

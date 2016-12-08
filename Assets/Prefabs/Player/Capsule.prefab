@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 54027304843383644}
   - component: {fileID: 114455191306772414}
   - component: {fileID: 114218773506945816}
+  - component: {fileID: 82957076355888874}
+  - component: {fileID: 114318949944000872}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -358,6 +360,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82957076355888874
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512872484717778}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &92260765611162392
 Behaviour:
   m_ObjectHideFlags: 1
@@ -383,14 +465,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045415515779198}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e078d608cf52bbb4ea288f86a94de398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Audio: {fileID: 82317949803173196}
-  NormalRoomMusic: {fileID: 0}
-  BossRoomMusic: {fileID: 0}
+  NormalRoomMusic: {fileID: 8300000, guid: 73fc45c8ec623ff408b3cfb5980e70c2, type: 3}
+  BossRoomMusic: {fileID: 8300000, guid: 8372ed1379c323f49846ad3b5f8d8a3f, type: 3}
 --- !u!114 &114198124336340822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -432,6 +514,21 @@ MonoBehaviour:
   MaxHp: 10
   isPortalMoving: 0
   EntryPositon: 0
+--- !u!114 &114318949944000872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512872484717778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5d120441e82dc49a9cdc473766021b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Heal: {fileID: 8300000, guid: 30adc13a94031e643bdd348500a4e47e, type: 3}
+  Teleport: {fileID: 8300000, guid: 636fb34ae2383d94390ecf8a7b955cda, type: 3}
+  Hurt: {fileID: 8300000, guid: de06f8ee5d75eec46bfe4fdd652948c0, type: 3}
+  Audio: {fileID: 82957076355888874}
 --- !u!114 &114455191306772414
 MonoBehaviour:
   m_ObjectHideFlags: 1
