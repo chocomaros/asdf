@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour {
 		Debug.Log (random);
 		Debug.Log (DropItems.Count);
 		if (random < DropItems.Count) {
-			Instantiate (DropItems [random], transform.position, Quaternion.identity);
+			Instantiate (DropItems [random], transform.position, Quaternion.identity,GameObject.FindWithTag("room").transform);
 		}
 		if (GameObject.FindGameObjectsWithTag ("enemy").Length == 1) {
 			GameObject.FindObjectOfType<GameManager> ().GetComponent<GameManager> ().CurrentPortalActive ();

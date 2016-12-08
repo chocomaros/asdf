@@ -15,6 +15,7 @@ TagManager:
   - portal
   - potion
   - item_box
+  - room
   layers:
   - Default
   - TransparentFX
