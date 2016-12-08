@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour {
 
 	public State state = State.PATROL;
 
+	private const float ORIGIN_PATROL_SPEED = 0.5f;
+	private const float ORIGIN_CHASE_SPEED = 1.0f;
+	private const float ORIGIN_HP = 100f;
+
 	public float PatrolSpeed = 0.5f;
 	public float ChaseSpeed = 1.0f;
 	public float TurnSpeed = 2.0f;
@@ -204,6 +208,12 @@ public class Enemy : MonoBehaviour {
 		direction.y = 0;
 		qua_rotation = Quaternion.LookRotation (direction);
 		timer = 0;
+	}
+
+	public void SetStatus(int level){
+		HP = (float)((1 + (level-1) * 0.3) * ORIGIN_HP);
+		PatrolSpeed = (float)((1 + (level-1) * 0.3) * ORIGIN_PATROL_SPEED);
+		ChaseSpeed = (float)((1 + (level-1) * 0.3) * ORIGIN_CHASE_SPEED);
 	}
 
 	public void BloodEffect(Transform transform){

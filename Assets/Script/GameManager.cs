@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
 
 	public GameObject player;
 	public GameObject miniMapOrigin;
-	public List<GameObject> RoomObjects; // 0:None, 1:Boss, 2:room1
+	public List<GameObject> RoomObjects;
+	// 0:None, 1:Boss, 2:room1
 	private GameObject[,] floor;
 	private bool isSettingEnd;
 	private GameObject[,] miniMap;
+	private int level = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log ("setFloor");
 		isSettingEnd = false;
+		SetLevel ();
 
 		for (int i = 0; i < RoomObjects.Count; i++) {
 			RoomObjects [i].SetActive (true);
@@ -133,15 +136,15 @@ public class GameManager : MonoBehaviour
 				}
 				switch (rooms [i, j].roomType) {
 				case (Room.RoomType.ROOM1): 
-					floor[i,j] = Instantiate(RoomObjects[1]);
+					floor [i, j] = Instantiate (RoomObjects [1]);
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.BOSS):
-					floor [i, j] = Instantiate (RoomObjects[1]);
+					floor [i, j] = Instantiate (RoomObjects [1]);
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.NONE):
-					floor[i,j] = Instantiate(RoomObjects[0]);
+					floor [i, j] = Instantiate (RoomObjects [0]);
 					break;
 				}
 				if (rooms [i, j].connectedDown) {
@@ -155,6 +158,11 @@ public class GameManager : MonoBehaviour
 				}
 				if (rooms [i, j].connectedRight) {
 					floor [i, j].GetComponent<Room> ().connectedRight = true;
+				}
+
+				Component[] enemies = floor [i, j].GetComponentsInChildren<Enemy> ();
+				foreach (Enemy enemy in enemies) {
+					enemy.SetStatus (level);
 				}
 
 				mapPosition.x += Room.mapLengthX;
@@ -291,8 +299,7 @@ public class GameManager : MonoBehaviour
 							if (i == 0) {
 								nextLevel = true;
 								break;
-							}
-							else if (i > 0) {
+							} else if (i > 0) {
 								floor [i, j].GetComponent<Room> ().isVisited = true;
 								floor [i, j].GetComponent<Room> ().isPlayerHere = false;
 								floor [i - 1, j].GetComponent<Room> ().isPlayerHere = true;
@@ -333,5 +340,10 @@ public class GameManager : MonoBehaviour
 			}
 			SetFloor ();
 		}
+	}
+
+	private void SetLevel(){
+		level++;
+		GameObject.Find ("Level Text").GetComponent<Text> ().text = "Floor : " + level;
 	}
 }
