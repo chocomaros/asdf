@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemBoxScript : MonoBehaviour {
 	public Animator animator;
 	public GameObject idleBox,destoryBox,myitem;
+	public AudioSource Audio;
+	public AudioClip Crashing;
 	bool destroyed=false;
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,7 @@ public class ItemBoxScript : MonoBehaviour {
 			idleBox.SetActive (false);
 			myitem.SetActive ( true);
 			destoryBox.SetActive (true);
+			Audio.PlayOneShot (Crashing);
 			Destroy (gameObject, 2f);
 
 		}
