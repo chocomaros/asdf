@@ -181,6 +181,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1320678008025846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4275773522844222}
+  - component: {fileID: 135715015507698592}
+  m_Layer: 0
+  m_Name: BottleHealth
+  m_TagString: potion
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1322511511385986
 GameObject:
   m_ObjectHideFlags: 1
@@ -376,17 +392,16 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4163717677867958}
-  - component: {fileID: 136138153990635198}
   m_Layer: 0
   m_Name: Bottle Health
-  m_TagString: potion
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1666431078941948
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -394,7 +409,7 @@ GameObject:
   - component: {fileID: 4962369203536948}
   m_Layer: 0
   m_Name: Bottle_Health
-  m_TagString: Untagged
+  m_TagString: potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,7 +610,7 @@ Transform:
   m_LocalPosition: {x: 0.5799999, y: -0.92, z: 3.783022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4962369203536948}
+  - {fileID: 4275773522844222}
   - {fileID: 4166756099425990}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -683,6 +698,20 @@ Transform:
   m_Father: {fileID: 4166756099425990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!4 &4275773522844222
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320678008025846}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.069000065, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4962369203536948}
+  m_Father: {fileID: 4163717677867958}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4283060096661270
 Transform:
   m_ObjectHideFlags: 1
@@ -945,12 +974,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666431078941948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalPosition: {x: 0, y: -0.969, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283060096661270}
   - {fileID: 4169139513369594}
-  m_Father: {fileID: 4163717677867958}
+  m_Father: {fileID: 4275773522844222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4971172391999748
@@ -1812,7 +1841,7 @@ MonoBehaviour:
   animator: {fileID: 95118156032704276}
   idleBox: {fileID: 1060597621740754}
   destoryBox: {fileID: 1754775893113800}
-  myitem: {fileID: 1666431078941948}
+  myitem: {fileID: 1320678008025846}
 --- !u!135 &135638355558271448
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1825,19 +1854,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5628161
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136138153990635198
-CapsuleCollider:
+--- !u!135 &135715015507698592
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663127665805662}
+  m_GameObject: {fileID: 1320678008025846}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 0.7
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.2, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198022243666464448
 ParticleSystem:
   m_ObjectHideFlags: 1
