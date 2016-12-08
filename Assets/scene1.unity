@@ -185,6 +185,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1461620667861498, guid: 86dd5f60103a36343954b1e93183a3f2,
     type: 2}
   m_PrefabInternal: {fileID: 1507624784}
+--- !u!82 &193682592 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82872873998341010, guid: 86dd5f60103a36343954b1e93183a3f2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1507624784}
 --- !u!1 &413388202
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +628,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114336150424063456, guid: 86dd5f60103a36343954b1e93183a3f2,
+        type: 2}
+      propertyPath: Hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
+    - target: {fileID: 114336150424063456, guid: 86dd5f60103a36343954b1e93183a3f2,
+        type: 2}
+      propertyPath: HeadShot
+      value: 
+      objectReference: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
+    - target: {fileID: 114336150424063456, guid: 86dd5f60103a36343954b1e93183a3f2,
+        type: 2}
+      propertyPath: Audio
+      value: 
+      objectReference: {fileID: 193682592}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86dd5f60103a36343954b1e93183a3f2, type: 2}
   m_IsPrefabParent: 0
