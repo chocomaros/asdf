@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 413388202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -214,7 +214,8 @@ MonoBehaviour:
   RoomThemes:
   - gameObjects:
     - {fileID: 1271684188333816, guid: ce1dc9fbdcc19e440b956980e02207d5, type: 2}
-    - {fileID: 1271684188333816, guid: ce1dc9fbdcc19e440b956980e02207d5, type: 2}
+    - {fileID: 1563602310112466, guid: 6974be6e4377b0141819989b9c4ba32d, type: 2}
+    - {fileID: 1563602310112466, guid: 6974be6e4377b0141819989b9c4ba32d, type: 2}
   Enemies:
   - gameObjects:
     - {fileID: 1992794750802258, guid: 4854998a2b038c84190fe3555136487c, type: 2}
