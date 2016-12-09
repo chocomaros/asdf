@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Prefabs/Temp/scene1.unity
   - enabled: 1
     path: Assets/scene1.unity
+  - enabled: 1
+    path: Assets/Game Over.unity

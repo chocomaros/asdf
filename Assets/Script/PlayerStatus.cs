@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class PlayerStatus : MonoBehaviour
 		this.hp += changedHp;
 		if (hp < 0) {
 			hp = 0;
+			SceneManager.LoadScene (2);
 		}
 		if (hp > MaxHp) {
 			hp = MaxHp;
@@ -73,7 +75,9 @@ public class PlayerStatus : MonoBehaviour
 		           collider.tag == "item_box") {
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 		} else if (collider.tag == "portal") {
-			gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Teleport);
+			if (!isPaused) {
+				gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Teleport);
+			}
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 		}
 	}

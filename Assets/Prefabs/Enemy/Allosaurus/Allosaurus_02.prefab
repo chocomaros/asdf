@@ -1406,6 +1406,8 @@ MonoBehaviour:
   animator: {fileID: 95486007736882206}
   agent: {fileID: 195084651108848518}
   blood: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 2}
+  DropItems:
+  - {fileID: 1663127665805662, guid: f1a431a6e41a1ea498306c34de8cb6fc, type: 2}
 --- !u!136 &136888816175259284
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -10,7 +10,7 @@ public class Room : MonoBehaviour {
 	public GameObject portalUp, portalDown, portalLeft, portalRight;
 	public const int mapLengthX = 50, mapLengthZ = 50;
 
-	public enum RoomType{NONE,ROOM1,BOSS};
+	public enum RoomType{NONE,NORMAL,BOSS};
 	public RoomType roomType;
 
 	public Room(RoomType roomType){

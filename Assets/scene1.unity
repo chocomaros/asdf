@@ -210,12 +210,20 @@ MonoBehaviour:
   player: {fileID: 1754005361}
   miniMapOrigin: {fileID: 1161036955172900, guid: 3ba55600eca3f1d4880c1a1d8c96d033,
     type: 2}
-  RoomObjects:
-  - {fileID: 1893047613938722, guid: ee39b9fcca7eee6419ff25770c631924, type: 2}
-  - {fileID: 1271684188333816, guid: ce1dc9fbdcc19e440b956980e02207d5, type: 2}
+  RoomNone: {fileID: 1893047613938722, guid: ee39b9fcca7eee6419ff25770c631924, type: 2}
+  RoomThemes:
+  - gameObjects:
+    - {fileID: 1271684188333816, guid: ce1dc9fbdcc19e440b956980e02207d5, type: 2}
+    - {fileID: 1271684188333816, guid: ce1dc9fbdcc19e440b956980e02207d5, type: 2}
   Enemies:
-  - {fileID: 1992794750802258, guid: 4854998a2b038c84190fe3555136487c, type: 2}
-  - {fileID: 1092059573346610, guid: fdc68eaa1c7dcd442a97f39c188b20a7, type: 2}
+  - gameObjects:
+    - {fileID: 1992794750802258, guid: 4854998a2b038c84190fe3555136487c, type: 2}
+  - gameObjects:
+    - {fileID: 1092059573346610, guid: fdc68eaa1c7dcd442a97f39c188b20a7, type: 2}
+  - gameObjects:
+    - {fileID: 1658737758180854, guid: 776b8ef28b723cb42b8df05a3bc456ad, type: 2}
+    - {fileID: 1727027984194258, guid: b9fbac5ef71a0ca4c81f936734ea9b2f, type: 2}
+    - {fileID: 1107325509899648, guid: 5e1b5b911ecf81a43b945f754599545a, type: 2}
 --- !u!4 &902524919
 Transform:
   m_ObjectHideFlags: 0

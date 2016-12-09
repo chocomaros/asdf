@@ -8,13 +8,23 @@ public class GameManager : MonoBehaviour
 
 	public GameObject player;
 	public GameObject miniMapOrigin;
-	public List<GameObject> RoomObjects;
-	public List<GameObject> Enemies;
-	// 0:None, 1:Boss, 2:room1
+	public GameObject RoomNone;
+	public List<GameObjectList> RoomThemes;
+	public List<GameObjectList> Enemies;
+
 	private GameObject[,] floor;
 	private bool isSettingEnd;
 	private GameObject[,] miniMap;
 	private int level = 0;
+	private List<GameObject> selectedRoomTheme;
+	private List<GameObject> currentEnemies;
+	private List<GameObject> bossEnemies;
+
+	[System.Serializable]
+	public class GameObjectList
+	{
+		public List<GameObject> gameObjects;
+	}
 
 	// Use this for initialization
 	void Start ()
@@ -37,9 +47,10 @@ public class GameManager : MonoBehaviour
 		Debug.Log ("setFloor");
 		isSettingEnd = false;
 		SetLevel ();
+		SetThemeAndEnemies ();
 
-		for (int i = 0; i < RoomObjects.Count; i++) {
-			RoomObjects [i].SetActive (true);
+		for (int i = 0; i < selectedRoomTheme.Count; i++) {
+			selectedRoomTheme [i].SetActive (true);
 		}
 
 		Room[,] rooms = new Room[4, 3];
@@ -48,7 +59,7 @@ public class GameManager : MonoBehaviour
 		rooms [0, 2] = new Room (Room.RoomType.NONE);
 		for (int i = 1; i < 4; i++) {
 			for (int j = 0; j < 3; j++) {
-				rooms [i, j] = new Room (Room.RoomType.ROOM1);
+				rooms [i, j] = new Room (Room.RoomType.NORMAL);
 			}
 		}
 		rooms = SetRoomPortal (rooms);
@@ -57,9 +68,10 @@ public class GameManager : MonoBehaviour
 		InstantiateRoom (rooms);
 		InitMap ();
 
-		for (int i = 0; i < RoomObjects.Count; i++) {
-			RoomObjects [i].SetActive (false);
+		for (int i = 0; i < selectedRoomTheme.Count; i++) {
+			selectedRoomTheme [i].SetActive (false);
 		}
+
 
 		floor [3, 1].GetComponent<Room> ().isPlayerHere = true;
 		SetPortalActive (floor [3, 1], false);
@@ -131,23 +143,28 @@ public class GameManager : MonoBehaviour
 					int random = Random.Range (0, 0);
 					switch (random) {
 					case 0:
-						rooms [i, j].roomType = Room.RoomType.ROOM1;
+						rooms [i, j].roomType = Room.RoomType.NORMAL;
 						break;
 					}
 				}
 				switch (rooms [i, j].roomType) {
-				case (Room.RoomType.ROOM1): 
-					floor [i, j] = Instantiate (RoomObjects [1]);
-					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.ROOM1;
+				case (Room.RoomType.NORMAL): 
+					if (selectedRoomTheme.Count > 1) {
+						floor [i, j] = Instantiate (selectedRoomTheme [Random.Range (0, selectedRoomTheme.Count - 1)]);
+					} else {
+						floor [i, j] = Instantiate (selectedRoomTheme [0]);
+					}
+
+					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.NORMAL;
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.BOSS):
-					floor [i, j] = Instantiate (RoomObjects [1]);
+					floor [i, j] = Instantiate (selectedRoomTheme [selectedRoomTheme.Count - 1]);
 					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.BOSS;
 					floor [i, j].transform.position = mapPosition;
 					break;
 				case (Room.RoomType.NONE):
-					floor [i, j] = Instantiate (RoomObjects [0]);
+					floor [i, j] = Instantiate (RoomNone);
 					floor [i, j].GetComponent<Room> ().roomType = Room.RoomType.NONE;
 					break;
 				}
@@ -276,70 +293,73 @@ public class GameManager : MonoBehaviour
 			for (int i = 0; i < 4; i++) {
 				if (!isMoved) {
 					for (int j = 0; j < 3; j++) {
-						if (floor [i, j].GetComponent<Room> ().isPlayerHere) {
-							switch (entryPosition) {
-							case Portal.Position.LEFT:
-								if (j > 0) {
-									floor [i, j].GetComponent<Room> ().isVisited = true;
-									floor [i, j].GetComponent<Room> ().isPlayerHere = false;
-									floor [i, j - 1].GetComponent<Room> ().isPlayerHere = true;
-									floor [i, j].SetActive (false);
-									floor [i, j - 1].SetActive (true);
-									isMoved = true;
-									player.transform.position = floor [i, j - 1].GetComponent<Room> ().portalRight.transform.position;
-									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j - 1].GetComponent<Room> ().roomType);
-									if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
-										SetPortalActive (floor [i, j - 1], false);
+						if (!isMoved) {
+							if (floor [i, j].GetComponent<Room> ().isPlayerHere) {
+								switch (entryPosition) {
+								case Portal.Position.LEFT:
+									if (j > 0) {
+										floor [i, j].GetComponent<Room> ().isVisited = true;
+										floor [i, j].GetComponent<Room> ().isPlayerHere = false;
+										floor [i, j - 1].GetComponent<Room> ().isPlayerHere = true;
+										floor [i, j].SetActive (false);
+										floor [i, j - 1].SetActive (true);
+										isMoved = true;
+										player.transform.position = floor [i, j - 1].GetComponent<Room> ().portalRight.transform.position;
+										player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j - 1].GetComponent<Room> ().roomType);
+										if (!floor [i, j - 1].GetComponent<Room> ().isVisited) {
+											SetPortalActive (floor [i, j - 1], false);
+										}
 									}
-								}
-								break;
-							case Portal.Position.RIGHT:
-								if (j < 3 - 1) {
-									floor [i, j].GetComponent<Room> ().isVisited = true;
-									floor [i, j].GetComponent<Room> ().isPlayerHere = false;
-									floor [i, j + 1].GetComponent<Room> ().isPlayerHere = true;
-									floor [i, j].SetActive (false);
-									floor [i, j + 1].SetActive (true);
-									isMoved = true;
-									player.transform.position = floor [i, j + 1].GetComponent<Room> ().portalLeft.transform.position;
-									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j + 1].GetComponent<Room> ().roomType);
-									if (!floor [i, j + 1].GetComponent<Room> ().isVisited) {
-										SetPortalActive (floor [i, j + 1], false);
-									}
-								}
-								break;
-							case Portal.Position.UP:
-								if (i == 0) {
-									nextLevel = true;
 									break;
-								} else if (i > 0) {
-									floor [i, j].GetComponent<Room> ().isVisited = true;
-									floor [i, j].GetComponent<Room> ().isPlayerHere = false;
-									floor [i - 1, j].GetComponent<Room> ().isPlayerHere = true;
-									floor [i, j].SetActive (false);
-									floor [i - 1, j].SetActive (true);
-									isMoved = true;
-									player.transform.position = floor [i - 1, j].GetComponent<Room> ().portalDown.transform.position;
-									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i - 1, j].GetComponent<Room> ().roomType);
-									if (!floor [i - 1, j].GetComponent<Room> ().isVisited) {
-										SetPortalActive (floor [i - 1, j], false);
+								case Portal.Position.RIGHT:
+									if (j < 3 - 1) {
+										floor [i, j].GetComponent<Room> ().isVisited = true;
+										floor [i, j].GetComponent<Room> ().isPlayerHere = false;
+										floor [i, j + 1].GetComponent<Room> ().isPlayerHere = true;
+										floor [i, j].SetActive (false);
+										floor [i, j + 1].SetActive (true);
+										isMoved = true;
+										player.transform.position = floor [i, j + 1].GetComponent<Room> ().portalLeft.transform.position;
+										player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i, j + 1].GetComponent<Room> ().roomType);
+										if (!floor [i, j + 1].GetComponent<Room> ().isVisited) {
+											SetPortalActive (floor [i, j + 1], false);
+										}
 									}
-								}
-								break;
-							case Portal.Position.DOWN:
-								if (i < 4 - 1) {
-									floor [i, j].GetComponent<Room> ().isVisited = true;
-									floor [i, j].GetComponent<Room> ().isPlayerHere = false;
-									floor [i + 1, j].GetComponent<Room> ().isPlayerHere = true;
-									floor [i, j].SetActive (false);
-									floor [i + 1, j].SetActive (true);
-									player.transform.position = floor [i + 1, j].GetComponent<Room> ().portalUp.transform.position;
-									player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i + 1, j].GetComponent<Room> ().roomType);
-									if (!floor [i + 1, j].GetComponent<Room> ().isVisited) {
-										SetPortalActive (floor [i + 1, j], false);
+									break;
+								case Portal.Position.UP:
+									if (i == 0) {
+										nextLevel = true;
+										break;
+									} else if (i > 0) {
+										floor [i, j].GetComponent<Room> ().isVisited = true;
+										floor [i, j].GetComponent<Room> ().isPlayerHere = false;
+										floor [i - 1, j].GetComponent<Room> ().isPlayerHere = true;
+										floor [i, j].SetActive (false);
+										floor [i - 1, j].SetActive (true);
+										isMoved = true;
+										player.transform.position = floor [i - 1, j].GetComponent<Room> ().portalDown.transform.position;
+										player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i - 1, j].GetComponent<Room> ().roomType);
+										if (!floor [i - 1, j].GetComponent<Room> ().isVisited) {
+											SetPortalActive (floor [i - 1, j], false);
+										}
 									}
+									break;
+								case Portal.Position.DOWN:
+									if (i < 4 - 1) {
+										floor [i, j].GetComponent<Room> ().isVisited = true;
+										floor [i, j].GetComponent<Room> ().isPlayerHere = false;
+										floor [i + 1, j].GetComponent<Room> ().isPlayerHere = true;
+										floor [i, j].SetActive (false);
+										floor [i + 1, j].SetActive (true);
+										isMoved = true;
+										player.transform.position = floor [i + 1, j].GetComponent<Room> ().portalUp.transform.position;
+										player.GetComponentInChildren<SoundBackground> ().SetBackgroundMusic (floor [i + 1, j].GetComponent<Room> ().roomType);
+										if (!floor [i + 1, j].GetComponent<Room> ().isVisited) {
+											SetPortalActive (floor [i + 1, j], false);
+										}
+									}
+									break;
 								}
-								break;
 							}
 						}
 					}
@@ -359,42 +379,96 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void SetEnemyGeneration(GameObject room){
-		int enemiesCount = Random.Range (3, 6);
-		Vector3[] position = new Vector3[enemiesCount];
-		int[] randPosition = new int[enemiesCount];
-		for (int i = 0; i < enemiesCount; i++) {
-			bool check = false;
+	private void SetEnemyGeneration (GameObject room)
+	{
+		if (room.GetComponent<Room> ().roomType == Room.RoomType.NORMAL) {
+			int enemiesCount = Random.Range (2, 4);
+			Vector3[] position = new Vector3[enemiesCount];
+			int[] randPosition = new int[enemiesCount];
+			for (int i = 0; i < enemiesCount; i++) {
+				bool check = false;
 
-			while (!check) {
-				int random = Random.Range (0, 10);
-				if (i == 0) {
-					randPosition [i] = random;
-					check = true;
-				} else {
-					for (int j = 0; j < i; j++) {
-						if (random == randPosition [j]) {
-							break;
-						}
-						if (random != randPosition [j] && j == i -1) {
-							randPosition [i] = random;
-							check = true;
+				while (!check) {
+					int random = Random.Range (0, 9);
+					if (i == 0) {
+						randPosition [i] = random;
+						check = true;
+					} else {
+						for (int j = 0; j < i; j++) {
+							if (random == randPosition [j]) {
+								break;
+							}
+							if (random != randPosition [j] && j == i - 1) {
+								randPosition [i] = random;
+								check = true;
+							}
 						}
 					}
 				}
+				int x = randPosition [i] / 3;
+				int z = randPosition [i] % 3;
+				x = (x - 1) * 10;
+				z = (z - 1) * 10;
+				position [i] = new Vector3 (x, 0, z);
+				GameObject enemy = Instantiate (currentEnemies [Random.Range (0, currentEnemies.Count)], new Vector3 (), Quaternion.Euler (0, Random.Range (0, 180), 0), room.transform);
+				enemy.transform.localPosition = position [i];
 			}
-			int x = randPosition [i] / 3;
-			int z = randPosition [i] % 3;
-			x = (x - 1) * 10;
-			z = (z - 1) * 10;
-			position [i] = new Vector3 (x, 0, z);
-			GameObject enemy = Instantiate (Enemies[Random.Range(0,Enemies.Count)], new Vector3(), Quaternion.Euler(0,Random.Range(0,180),0) , room.transform);
-			enemy.transform.localPosition = position [i];
+
+		} else if (room.GetComponent<Room> ().roomType == Room.RoomType.BOSS) {
+			int[] randPosition = new int[bossEnemies.Count];
+			Vector3[] position = new Vector3[bossEnemies.Count];
+			for (int i = 0; i < bossEnemies.Count; i++) {
+				bool check = false;
+				while (!check) {
+					int random = Random.Range (0, 9);
+					if (i == 0) {
+						randPosition [0] = 4;
+						check = true;
+					} else {
+						for (int j = 0; j < i; j++) {
+							if (random == randPosition [j]) {
+								break;
+							}
+							if (random != randPosition [j] && j == i - 1) {
+								randPosition [i] = random;
+								check = true;
+							}
+						}
+					}
+				}
+				int x = randPosition [i] / 3;
+				int z = randPosition [i] % 3;
+				x = (x - 1) * 10;
+				z = (z - 1) * 10;
+				position [i] = new Vector3 (x, 0, z);
+
+				GameObject boss = Instantiate (bossEnemies [i], new Vector3 (), Quaternion.Euler (0, 180, 0), room.transform);
+				boss.transform.localPosition = position [i];
+				boss.GetComponent<Enemy> ().HP *= 3;
+			}
 		}
 	}
 
-	private void SetLevel(){
+	private void SetLevel ()
+	{
 		level++;
 		GameObject.Find ("Level Text").GetComponent<Text> ().text = "Floor : " + level;
+	}
+
+	private void SetThemeAndEnemies ()
+	{
+		selectedRoomTheme = RoomThemes [(level - 1) % RoomThemes.Count].gameObjects;
+		currentEnemies = new List<GameObject> ();
+		Debug.Log ("selectedRoomTheme : " + selectedRoomTheme.Count);
+		for (int i = 0; i < ((level - 1) % (Enemies.Count - 1) + 1); i++) {
+			for (int j = 0; j < Enemies [i].gameObjects.Count; j++) {
+				currentEnemies.Add (Enemies [i].gameObjects [j]);
+			}
+		}
+
+		bossEnemies = Enemies [(level - 1) % (Enemies.Count - 1) + 1].gameObjects;
+
+		Debug.Log ("current Enemies : " + currentEnemies.Count);
+		Debug.Log ("boss Enemies : " + bossEnemies.Count);
 	}
 }
