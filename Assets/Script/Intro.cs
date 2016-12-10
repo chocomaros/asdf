@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Intro : MonoBehaviour {
 
 	public GameObject Movie;
-	public MovieTexture movieTexutre;
+	private MovieTexture movieTexture;
 	private AudioSource audio;
 
 	private enum State{MOVIE_PLAYING, SELECT_UI};
@@ -21,7 +21,7 @@ public class Intro : MonoBehaviour {
 		btExit.onClick.AddListener (btExitClick);
 		btStart.enabled = false;
 		btExit.enabled = false;
-		movieTexutre = Movie.GetComponent<RawImage> ().texture as MovieTexture;
+		movieTexture = Movie.GetComponent<RawImage> ().texture as MovieTexture;
 		//Movie.GetComponent<RawImage> ().texture = movieTexutre as MovieTexture;
 		//audio = GetComponent<AudioSource> ();
 		//audio.clip = movieTexutre.audioClip;
@@ -49,9 +49,9 @@ public class Intro : MonoBehaviour {
 	}
 
 	void MoviePlaying(){
-		movieTexutre.Play ();
+		movieTexture.Play ();
 		if (Input.GetMouseButtonDown (0)) {
-			movieTexutre.Stop ();
+			movieTexture.Stop ();
 			//audio.Stop ();
 			state = State.SELECT_UI;
 		}

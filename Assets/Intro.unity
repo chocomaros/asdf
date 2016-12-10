@@ -346,7 +346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movie: {fileID: 1499850422}
-  movieTexutre: {fileID: 0}
   btStart: {fileID: 1628958468}
   btExit: {fileID: 1904699611}
 --- !u!1 &740067907
