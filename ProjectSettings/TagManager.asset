@@ -16,6 +16,7 @@ TagManager:
   - potion
   - item_box
   - room
+  - obstacle
   layers:
   - Default
   - TransparentFX

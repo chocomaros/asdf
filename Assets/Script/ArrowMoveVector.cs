@@ -29,6 +29,9 @@ public class ArrowMoveVector : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter(Collision collision){
+		Debug.Log ("collision");
+	}
 
 	void OnTriggerEnter(Collider collider){
 		if (collider.transform.tag != "Player") {

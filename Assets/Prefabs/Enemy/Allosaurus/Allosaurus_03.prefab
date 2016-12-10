@@ -1403,7 +1403,7 @@ MonoBehaviour:
   TurnSpeed: 2
   SightDistance: 10
   heightMultiplier: 1.5
-  PatrolTurnDistance: 7
+  PatrolTurnDistance: 3
   PatrolMoveTimeMin: 5
   PatrolMoveTimeMax: 7
   HP: 100

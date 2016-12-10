@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 	public float SightDistance = 10.0f;
 	public float heightMultiplier = 1.5f;
 
-	public float PatrolTurnDistance = 7.0f;
+	public float PatrolTurnDistance = 3.0f;
 	public int PatrolMoveTimeMin = 5;
 	public int PatrolMoveTimeMax = 7;
 
@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour {
 			if(hit.collider.tag == "Player"){
 				state = State.CHASE;
 				target = hit.collider.gameObject;
-			} else if(hit.collider.tag == "wall"){
+			} else if(hit.collider.tag == "wall" || hit.collider.tag == "obstacle"){
 				if(hit.distance < PatrolTurnDistance && !isTurning){
 					SetRandomTurning(120,240);
 				}
