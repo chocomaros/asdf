@@ -10,19 +10,9 @@ public class Equipment : MonoBehaviour
     public bool isWeapon = false;
     public int HP = 0;
     public int Damage = 0;
+	public int Speed;
+	public int MaxPower;
     //look
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void setSerialNumber(int serial)
     {
