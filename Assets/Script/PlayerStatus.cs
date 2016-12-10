@@ -13,14 +13,16 @@ public class PlayerStatus : MonoBehaviour
 	public bool isPortalMoving = false;
 	public Portal.Position EntryPositon;
 	private bool isPaused = false;
-
+    private Equipment weapon, armor;
 	// Use this for initialization
 	void Start ()
 	{
 		hp = MaxHp;
+        weapon.setSerialNumber(0);
+        armor.setSerialNumber(4);
 	}
 
-	public void healthChange (int changedHp)
+    public void healthChange (int changedHp)
 	{
 		if (changedHp > 0) {
 			gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Heal);
