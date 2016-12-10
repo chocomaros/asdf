@@ -245,12 +245,12 @@ public class GameManager : MonoBehaviour
 		GameObject mapPosition = GameObject.Find ("Map Position");
 		int x = 25, y = 16;
 		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 3; j++) {
+			for (int j = 2; j >= 0; j--) {
 				if (floor [i, j].GetComponent<Room> ().roomType != Room.RoomType.NONE) {
 					miniMap [i, j] = Instantiate (miniMapOrigin, mapPosition.transform);
 					miniMap [i, j].transform.localPosition = mapLocalPosition;
 				}
-				mapLocalPosition.x += x;
+				mapLocalPosition.x -= x;
 			}
 			mapLocalPosition.x = 0;
 			mapLocalPosition.y -= y;
