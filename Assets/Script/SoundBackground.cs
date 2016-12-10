@@ -15,11 +15,6 @@ public class SoundBackground : MonoBehaviour {
 		Audio.volume = 0.3f;
 		Audio.Play ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void SetBackgroundMusic(Room.RoomType roomType){
 		if (roomType == Room.RoomType.BOSS) {

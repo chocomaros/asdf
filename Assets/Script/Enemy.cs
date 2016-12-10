@@ -49,11 +49,6 @@ public class Enemy : MonoBehaviour {
 		patrolMoveTime = Random.Range (PatrolMoveTimeMin, PatrolMoveTimeMax);
 		StartCoroutine ("FSM");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
 	IEnumerator FSM(){
 		while (isAlive) {
 			switch (state) {

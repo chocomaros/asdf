@@ -12,9 +12,4 @@ public class EnemySkill : MonoBehaviour {
 	void Start () {
 		gameObject.tag = "enemy_attack";
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

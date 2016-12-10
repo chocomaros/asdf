@@ -15,10 +15,6 @@ public class ArrowMoveVector : MonoBehaviour {
 
 	public GameObject player;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if (movingOn && gameObject.name == "Arrow(Clone)") {

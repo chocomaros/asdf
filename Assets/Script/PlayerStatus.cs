@@ -19,12 +19,6 @@ public class PlayerStatus : MonoBehaviour
 	{
 		hp = MaxHp;
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
 
 	public void healthChange (int changedHp)
 	{

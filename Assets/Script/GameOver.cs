@@ -14,12 +14,6 @@ public class GameOver : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.None;
 		ButtonMain.GetComponent<Button> ().onClick.AddListener (ButtonMainClick);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	private void ButtonMainClick(){
 		SceneManager.LoadScene (0);
 	}

@@ -13,11 +13,6 @@ public class ItemBoxScript : MonoBehaviour {
 		destoryBox.SetActive (false);
 		myitem.SetActive (false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 	public void DestoryBox(){
 		if (!destroyed) {
 			destroyed = true;

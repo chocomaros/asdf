@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class IEnemyAttack : MonoBehaviour {
 
-	void Start(){
-
-	}
-
-	void Update(){
-
-	}
 	public virtual bool checkAttack (float distance){
 		return false;
 	}

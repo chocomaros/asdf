@@ -28,11 +28,6 @@ public class Intro : MonoBehaviour {
 		//audio.Play ();
 		StartCoroutine ("IntroState");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	IEnumerator IntroState(){
 		while (true) {

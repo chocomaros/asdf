@@ -8,16 +8,6 @@ public class Potion : MonoBehaviour {
 	public Type type;
 	public int stat;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public bool DrinkPotion(PlayerStatus playerStatus){
 		switch (type) {
 		case Type.HEAL:
