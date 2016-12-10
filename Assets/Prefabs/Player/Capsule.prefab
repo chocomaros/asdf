@@ -515,7 +515,7 @@ MonoBehaviour:
   Heal: {fileID: 8300000, guid: 30adc13a94031e643bdd348500a4e47e, type: 3}
   Teleport: {fileID: 8300000, guid: 636fb34ae2383d94390ecf8a7b955cda, type: 3}
   Hurt: {fileID: 8300000, guid: de06f8ee5d75eec46bfe4fdd652948c0, type: 3}
-  PowerUp: {fileID: 8300000, guid: 4e363163d4b65dd499e70ac175e0292e, type: 3}
+  PowerUp: {fileID: 8300000, guid: 07f3a59b73aeb72429e20f04abf6f71c, type: 3}
   Audio: {fileID: 82957076355888874}
 --- !u!114 &114455191306772414
 MonoBehaviour:
