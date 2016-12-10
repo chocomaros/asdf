@@ -22,7 +22,7 @@ public class ArrowMoveVector : MonoBehaviour {
 			vector.z = power - gravity;
 			vector.y = gravity;
 			arrow.Translate(vector);
-			arrow.Rotate (new Vector3(Mathf.Cos(angle * Mathf.PI / 180f),0,0));
+			arrow.Rotate (new Vector3(Mathf.Cos(angle * Mathf.PI / 180f),0,0)/(0.4f+power*2.5f));
 		}
 	}
 
