@@ -2017,6 +2017,8 @@ MonoBehaviour:
   blood: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 2}
   DropItems:
   - {fileID: 1663127665805662, guid: f1a431a6e41a1ea498306c34de8cb6fc, type: 2}
+  - {fileID: 1663127665805662, guid: 886f75436bcdb2e47adfce1821d3ee78, type: 2}
+  - {fileID: 1663127665805662, guid: 970e5debab48dcc4c8c3033fe574b424, type: 2}
 --- !u!114 &114877179686615814
 MonoBehaviour:
   m_ObjectHideFlags: 1

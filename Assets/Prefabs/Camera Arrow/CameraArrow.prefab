@@ -39,9 +39,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4268447425643378}
-  - component: {fileID: 65956787799533684}
-  - component: {fileID: 114362436225655008}
-  - component: {fileID: 114224133565528000}
   m_Layer: 8
   m_Name: Elven Long Bow Arrow
   m_TagString: Untagged
@@ -322,18 +319,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.013197441, y: 0.014663864, z: 0.9712915}
   m_Center: {x: 0.0021481514, y: -0.0026521683, z: -0.030691504}
---- !u!65 &65956787799533684
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616219675409542}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 19.3, z: 0.3}
-  m_Center: {x: 0, y: 0, z: -1}
 --- !u!81 &81013261845305528
 AudioListener:
   m_ObjectHideFlags: 1
@@ -428,34 +413,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817542945542538}
   m_Enabled: 1
---- !u!114 &114224133565528000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616219675409542}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ab1108881d906d49959d5f1c9c7cb3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowMoveVector: {fileID: 114362436225655008}
-  power: 0
-  angle: 0
---- !u!114 &114362436225655008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616219675409542}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704d42221b8379246bce62ca6bcd6537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrow: {fileID: 4268447425643378}
-  power: 0.01
-  angle: 45
 --- !u!114 &114388632851225032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,6 +427,7 @@ MonoBehaviour:
   arrow: {fileID: 4758135393234200}
   power: 0.01
   angle: 45
+  player: {fileID: 0}
 --- !u!114 &114819859642630658
 MonoBehaviour:
   m_ObjectHideFlags: 1

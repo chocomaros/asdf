@@ -13,9 +13,10 @@ public class ArrowMoveVector : MonoBehaviour {
 	private bool movingOn = true;
 	private Vector3 vector;
 
+	public GameObject player;
+
 	// Use this for initialization
 	void Start () {
-
 	}
 	
 	// Update is called once per frame
@@ -29,16 +30,12 @@ public class ArrowMoveVector : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision collision){
-		Debug.Log ("collision");
-	}
-
 	void OnTriggerEnter(Collider collider){
 		if (collider.transform.tag != "Player") {
 			if (collider.transform.tag == "enemy") {
 				if (movingOn) {
 					arrow.parent = collider.transform;
-					collider.GetComponent<Enemy> ().HP -= 50 * power;
+					collider.GetComponent<Enemy> ().HP -= player.GetComponent<PlayerStatus>().Damage * power;
 					collider.GetComponent<Enemy> ().BloodEffect (arrow.transform);
 					if (collider.GetComponent<Enemy> ().HP <= 0) {
 						collider.GetComponent<Enemy> ().state = Enemy.State.DEATH;
@@ -67,7 +64,7 @@ public class ArrowMoveVector : MonoBehaviour {
 				if (movingOn) {
 					arrow.parent = collider.transform;
 					
-					collider.GetComponentInParent<Enemy> ().HP -= 2 * 50 * power;
+					collider.GetComponentInParent<Enemy> ().HP -= 2 * player.GetComponent<PlayerStatus>().Damage * power;
 					collider.GetComponentInParent<Enemy> ().BloodEffect (arrow.transform);
 					if (collider.GetComponentInParent<Enemy> ().HP <= 0) {
 						collider.GetComponentInParent<Enemy> ().state = Enemy.State.DEATH;

@@ -9,6 +9,7 @@ public class PlayerStatus : MonoBehaviour
 
 	public int MaxHp = 10;
 	private int hp;
+	public int Damage = 50;
 	public bool isPortalMoving = false;
 	public Portal.Position EntryPositon;
 	private bool isPaused = false;
@@ -45,6 +46,16 @@ public class PlayerStatus : MonoBehaviour
 		Color c = GameObject.FindGameObjectWithTag ("background").GetComponent<Image> ().color;
 		c.a = 0.5f - 0.5f * hpRate;
 		GameObject.FindGameObjectWithTag ("background").GetComponent<Image> ().color = c;
+	}
+
+	public void maxHealthChange(int changedMaxHp){
+		MaxHp += changedMaxHp;
+		healthChange (changedMaxHp);
+	}
+
+	public void damageChange(int changedDamage){
+		gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.PowerUp);
+		Damage += changedDamage;
 	}
 
 	public int getHealth ()
@@ -95,17 +106,15 @@ public class PlayerStatus : MonoBehaviour
 				}
 			}
 		} else if (collider.tag == "potion") {
+			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 			if (Input.GetKey (KeyCode.E)) {
 				if (!isPaused) {
 					isPaused = true;
-					if (hp < MaxHp) {
-						healthChange (1);
-						Destroy(collider.gameObject);
+					if (collider.GetComponent<Potion> ().DrinkPotion (this)) {
 						GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 					}
 					Invoke ("ReleasePause", 1f);
 				}
-
 			}
 		} else if (collider.tag == "item_box") {
 			if (Input.GetKey (KeyCode.E)) {

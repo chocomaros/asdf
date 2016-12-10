@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 33755857827487328}
   - component: {fileID: 135537282271367020}
   - component: {fileID: 23197814643180260}
-  - component: {fileID: 114198124336340822}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -79,8 +78,6 @@ GameObject:
   - component: {fileID: 33075336601940402}
   - component: {fileID: 136850143071839072}
   - component: {fileID: 23178913402444332}
-  - component: {fileID: 114778252297489600}
-  - component: {fileID: 143229708825068774}
   - component: {fileID: 54027304843383644}
   - component: {fileID: 114455191306772414}
   - component: {fileID: 114218773506945816}
@@ -473,17 +470,6 @@ MonoBehaviour:
   Audio: {fileID: 82317949803173196}
   NormalRoomMusic: {fileID: 8300000, guid: 73fc45c8ec623ff408b3cfb5980e70c2, type: 3}
   BossRoomMusic: {fileID: 8300000, guid: 8372ed1379c323f49846ad3b5f8d8a3f, type: 3}
---- !u!114 &114198124336340822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1328705110339532}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b4fa8e3fbdb2b4faa6530ef5903c87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114199362314095370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,6 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 10
+  Damage: 50
   isPortalMoving: 0
   EntryPositon: 0
 --- !u!114 &114318949944000872
@@ -528,6 +515,7 @@ MonoBehaviour:
   Heal: {fileID: 8300000, guid: 30adc13a94031e643bdd348500a4e47e, type: 3}
   Teleport: {fileID: 8300000, guid: 636fb34ae2383d94390ecf8a7b955cda, type: 3}
   Hurt: {fileID: 8300000, guid: de06f8ee5d75eec46bfe4fdd652948c0, type: 3}
+  PowerUp: {fileID: 8300000, guid: 4e363163d4b65dd499e70ac175e0292e, type: 3}
   Audio: {fileID: 82957076355888874}
 --- !u!114 &114455191306772414
 MonoBehaviour:
@@ -589,18 +577,6 @@ MonoBehaviour:
     airControl: 0
     shellOffset: 0
   arrowShot: {fileID: 114199362314095370}
---- !u!114 &114778252297489600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1512872484717778}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32dc543f3edf0b04591d8175a5c973ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CC: {fileID: 143229708825068774}
 --- !u!124 &124275548645907966
 Behaviour:
   m_ObjectHideFlags: 1
@@ -632,21 +608,4 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &143229708825068774
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1512872484717778}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
