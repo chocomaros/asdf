@@ -9,6 +9,7 @@ public class RangeAttack : IEnemyAttack {
 	public float SkillCoolTime;
 	public float SkillCastTime;
 	public float SkillDistance;
+	public float SkillLastTime;
 	public bool isNearAttackPossible;
 	public GameObject Skill;
 
@@ -77,7 +78,7 @@ public class RangeAttack : IEnemyAttack {
 		skillPosition.y = 0;
 		yield return new WaitForSeconds (SkillCastTime);
 		setSkillDamage (2);
-		Destroy(Instantiate (Skill,skillPosition,new Quaternion(0,0,0,0)),2f);
+		Destroy(Instantiate (Skill,skillPosition,new Quaternion(0,0,0,0)),SkillLastTime);
 	}
 
 	private IEnumerator CoolTimeReset(){

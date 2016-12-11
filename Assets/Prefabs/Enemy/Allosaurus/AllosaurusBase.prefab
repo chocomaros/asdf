@@ -1401,7 +1401,7 @@ MonoBehaviour:
   PatrolTurnDistance: 3
   PatrolMoveTimeMin: 5
   PatrolMoveTimeMax: 7
-  HP: 100
+  HP: 200
   enemyAttack: {fileID: 114087263427904950}
   animator: {fileID: 95454772512526964}
   agent: {fileID: 195937545129159006}

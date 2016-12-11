@@ -31,10 +31,13 @@ public class ArrowMoveVector : MonoBehaviour {
 			if (collider.transform.tag == "enemy") {
 				if (movingOn) {
 					arrow.parent = collider.transform;
-					collider.GetComponent<Enemy> ().HP -= player.GetComponent<PlayerStatus>().getDamage() * power;
-					collider.GetComponent<Enemy> ().BloodEffect (arrow.transform);
-					if (collider.GetComponent<Enemy> ().HP <= 0) {
-						collider.GetComponent<Enemy> ().state = Enemy.State.DEATH;
+					Enemy enemy = collider.GetComponent<Enemy> ();
+					Debug.Log (enemy.HP + "에서");
+					enemy.HP -= player.GetComponent<PlayerStatus>().getDamage() * power;
+					Debug.Log (enemy.HP + "로");
+					enemy.BloodEffect (arrow.transform);
+					if (enemy.HP <= 0) {
+						enemy.state = Enemy.State.DEATH;
 						//요 아래가 시체통과
 						collider.GetComponent<Rigidbody> ().isKinematic = true;
 						collider.GetComponent<Rigidbody> ().useGravity = false;
@@ -48,8 +51,8 @@ public class ArrowMoveVector : MonoBehaviour {
 							colliders [collider_i].isTrigger = true;
 						}
 					} else {
-						collider.GetComponent<Enemy> ().animator.SetTrigger ("hit");
-						collider.GetComponent<Enemy> ().HitTurn (arrow.transform.position);
+						enemy.animator.SetTrigger ("hit");
+						enemy.HitTurn (arrow.transform.position);
 
 					}
 					Debug.Log ("enemy");
@@ -59,11 +62,13 @@ public class ArrowMoveVector : MonoBehaviour {
 			} else if (collider.transform.tag == "enemy_head") {
 				if (movingOn) {
 					arrow.parent = collider.transform;
-					
-					collider.GetComponentInParent<Enemy> ().HP -= 2 * player.GetComponent<PlayerStatus>().getDamage() * power;
-					collider.GetComponentInParent<Enemy> ().BloodEffect (arrow.transform);
-					if (collider.GetComponentInParent<Enemy> ().HP <= 0) {
-						collider.GetComponentInParent<Enemy> ().state = Enemy.State.DEATH;
+					Enemy enemy = collider.GetComponentInParent<Enemy> ();
+					Debug.Log (enemy.HP + "에서");
+					enemy.HP -= 2 * player.GetComponent<PlayerStatus>().getDamage() * power;
+					Debug.Log (enemy.HP + "로");
+					enemy.BloodEffect (arrow.transform);
+					if (enemy.HP <= 0) {
+						enemy.state = Enemy.State.DEATH;
 						//요 아래가 시체통과
 						collider.GetComponentInParent<Rigidbody> ().isKinematic = true;
 						collider.GetComponentInParent<Rigidbody> ().useGravity = false;
@@ -77,8 +82,8 @@ public class ArrowMoveVector : MonoBehaviour {
 							colliders [collider_i].isTrigger = true;
 						}
 					} else {
-						collider.GetComponentInParent<Enemy> ().animator.SetTrigger ("hit");
-						collider.GetComponentInParent<Enemy> ().HitTurn (arrow.transform.position);
+						enemy.animator.SetTrigger ("hit");
+						enemy.HitTurn (arrow.transform.position);
 					}
 					Debug.Log ("enemy head");
 
