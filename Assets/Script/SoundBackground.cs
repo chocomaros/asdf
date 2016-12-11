@@ -23,7 +23,9 @@ public class SoundBackground : MonoBehaviour {
 			Audio.Play();
 		} else {
 			if (!Audio.clip.Equals (NormalRoomMusic)) {
-				Audio.Stop ();
+				if (Audio.isPlaying) {
+					Audio.Stop ();
+				}
 				Audio.clip = NormalRoomMusic;
 				Audio.Play();
 			}
