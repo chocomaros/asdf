@@ -1231,12 +1231,12 @@ MonoBehaviour:
   PatrolSpeed: 0.5
   ChaseSpeed: 1
   TurnSpeed: 2
-  SightDistance: 10
+  SightDistance: 13
   heightMultiplier: 1.3
   PatrolTurnDistance: 3
   PatrolMoveTimeMin: 5
   PatrolMoveTimeMax: 7
-  HP: 200
+  HP: 150
   enemyAttack: {fileID: 114496653070118904}
   animator: {fileID: 95978150317065880}
   agent: {fileID: 195900539774253970}
