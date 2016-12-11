@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hit: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
-  HeadShot: {fileID: 8300000, guid: 121a45330c5793245a7f226cc86ed4fe, type: 3}
+  HeadShot: {fileID: 8300000, guid: f5e1eee0feb29a7468fd2f05a572ff8b, type: 3}
   Audio: {fileID: 40547527}
 --- !u!82 &40547527
 AudioSource:
