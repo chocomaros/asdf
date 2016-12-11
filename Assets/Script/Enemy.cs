@@ -213,9 +213,9 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void SetStatus(int level){
-		HP = (float)((1 + (level-1) * 0.3) * ORIGIN_HP);
-		PatrolSpeed = (float)((1 + (level-1) * 0.3) * ORIGIN_PATROL_SPEED);
-		ChaseSpeed = (float)((1 + (level-1) * 0.3) * ORIGIN_CHASE_SPEED);
+		HP = (float)((1 + (level-1) * 0.3) * HP);
+		PatrolSpeed = (float)((1 + (level-1) * 0.3) * PatrolSpeed);
+		ChaseSpeed = (float)((1 + (level-1) * 0.3) * ChaseSpeed);
 	}
 
 	public void BloodEffect(Transform transform){

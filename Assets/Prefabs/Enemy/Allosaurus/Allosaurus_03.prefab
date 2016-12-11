@@ -1384,6 +1384,7 @@ MonoBehaviour:
   SkillCoolTime: 3
   SkillCastTime: 1
   SkillDistance: 10
+  SkillLastTime: 3
   isNearAttackPossible: 1
   Skill: {fileID: 1487126427445484, guid: c5651876110dc014d8a14ab7a1dda5ca, type: 2}
 --- !u!114 &114728044615946662
@@ -1406,7 +1407,7 @@ MonoBehaviour:
   PatrolTurnDistance: 3
   PatrolMoveTimeMin: 5
   PatrolMoveTimeMax: 7
-  HP: 100
+  HP: 300
   enemyAttack: {fileID: 114564523491962642}
   animator: {fileID: 95856727572261156}
   agent: {fileID: 195007783622979792}

@@ -444,7 +444,7 @@ public class GameManager : MonoBehaviour
 
 				GameObject boss = Instantiate (bossEnemies [i], new Vector3 (), Quaternion.Euler (0, 180, 0), room.transform);
 				boss.transform.localPosition = position [i];
-				boss.GetComponent<Enemy> ().HP *= 3;
+				SetBossStat (boss.GetComponent<Enemy> ());
 			}
 		}
 	}
@@ -475,4 +475,17 @@ public class GameManager : MonoBehaviour
 		Debug.Log ("current Enemies : " + currentEnemies.Count);
 		Debug.Log ("boss Enemies : " + bossEnemies.Count);
 	}
+	private void SetBossStat(Enemy enemy){
+		if(enemy.name == "skeleton(Clone)"){
+			enemy.HP *= 3f;
+			RangeAttack rangeAttack = enemy.GetComponent<RangeAttack>();
+			rangeAttack.SkillCoolTime = 5f;
+			rangeAttack.SkillLastTime = 45f;
+			rangeAttack.SkillCastTime = 0.5f;
+		}else{
+			enemy.HP*=5f;
+		}
+		Debug.Log ("보스체력" + enemy.HP);
+	}
+
 }
