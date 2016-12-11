@@ -22,6 +22,9 @@ public class SoundBackground : MonoBehaviour {
 			Audio.clip = BossRoomMusic;
 			Audio.Play();
 		} else {
+			if (Audio.clip == null) {
+				Audio.clip = NormalRoomMusic;
+			}
 			if (!Audio.clip.Equals (NormalRoomMusic)) {
 				if (Audio.isPlaying) {
 					Audio.Stop ();

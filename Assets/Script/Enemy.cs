@@ -136,7 +136,7 @@ public class Enemy : MonoBehaviour {
 		agent.Stop ();
 		animator.SetTrigger ("dead");
 		isAlive = false;
-		int random = Random.Range (0, 10);
+		int random = Random.Range (0, 20);
 		Debug.Log (random);
 		Debug.Log (DropItems.Count);
 		if (random < DropItems.Count) {
