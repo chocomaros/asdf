@@ -9,74 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1837680648834640}
+  m_RootGameObject: {fileID: 1214260812902352}
   m_IsPrefabParent: 1
---- !u!1 &1641719319866638
+--- !u!1 &1214260812902352
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4132141562263412}
-  - component: {fileID: 33178047307754672}
-  - component: {fileID: 23502575780916988}
+  - component: {fileID: 4426455377113746}
+  - component: {fileID: 33330637822176646}
+  - component: {fileID: 23049257989436076}
+  - component: {fileID: 114620765677838396}
   m_Layer: 8
-  m_Name: default
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1837680648834640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4545510799539494}
-  - component: {fileID: 114198885710119270}
-  m_Layer: 8
-  m_Name: arrow1
+  m_Name: arrow3_origin
   m_TagString: equip_item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4132141562263412
+--- !u!4 &4426455377113746
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1641719319866638}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1214260812902352}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.02, y: -0.013, z: 0.21399999}
+  m_LocalScale: {x: 0.002, y: 0.0030000093, z: 0.0020000048}
   m_Children: []
-  m_Father: {fileID: 4545510799539494}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4545510799539494
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1837680648834640}
-  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
-  m_LocalPosition: {x: -0.001999855, y: 0.049, z: 0.056}
-  m_LocalScale: {x: 0.05, y: 0.039999954, z: 0.049999967}
-  m_Children:
-  - {fileID: 4132141562263412}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
---- !u!23 &23502575780916988
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &23049257989436076
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1641719319866638}
+  m_GameObject: {fileID: 1214260812902352}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 971de6301b09f154e81f6b27862d54a2, type: 2}
+  - {fileID: 2100000, guid: f4a15f6dd3c7c954eb5444a7fa2baa8c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,19 +73,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33178047307754672
+--- !u!33 &33330637822176646
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1641719319866638}
-  m_Mesh: {fileID: 4300000, guid: 432dd2b7c2581c744a40ca43b1307c17, type: 3}
---- !u!114 &114198885710119270
+  m_GameObject: {fileID: 1214260812902352}
+  m_Mesh: {fileID: 4300002, guid: 1c27699fa827ed64982a514d264a2242, type: 3}
+--- !u!114 &114620765677838396
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1837680648834640}
+  m_GameObject: {fileID: 1214260812902352}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cb5aaf209612694eaf94c89cacf2dfc, type: 3}
@@ -125,6 +96,6 @@ MonoBehaviour:
   Damage: 5
   Speed: 0
   MaxPower: 0
-  Name: arrow of wind
+  Name: normal arrow
   Level: 0
   type: 1

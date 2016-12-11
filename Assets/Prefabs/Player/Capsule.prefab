@@ -501,6 +501,8 @@ MonoBehaviour:
   Damage: 50
   isPortalMoving: 0
   EntryPositon: 0
+  Bow: {fileID: 114845889678072814, guid: d0dd85058353cb74dbe0559e21175005, type: 2}
+  Arrow: {fileID: 114005894049193812, guid: 5e84db9fab96dd6418e333e36448ccf2, type: 2}
 --- !u!114 &114318949944000872
 MonoBehaviour:
   m_ObjectHideFlags: 1

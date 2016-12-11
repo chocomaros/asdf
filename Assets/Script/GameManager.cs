@@ -455,6 +455,10 @@ public class GameManager : MonoBehaviour
 		GameObject.Find ("Level Text").GetComponent<Text> ().text = "Floor : " + level;
 	}
 
+	public int getLevel(){
+		return level;
+	}
+
 	private void SetThemeAndEnemies ()
 	{
 		selectedRoomTheme = RoomThemes [(level - 1) % RoomThemes.Count].gameObjects;
