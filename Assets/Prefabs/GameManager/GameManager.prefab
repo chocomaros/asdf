@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1902813861122118}
+  m_IsPrefabParent: 1
+--- !u!1 &1902813861122118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4026749238051710}
+  - component: {fileID: 114294417429252682}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4026749238051710
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1902813861122118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5500002, y: 3.12, z: -1.2999983}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114294417429252682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1902813861122118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34c5a8032b84394a875ca8f129d5004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  miniMapOrigin: {fileID: 1161036955172900, guid: 3ba55600eca3f1d4880c1a1d8c96d033,
+    type: 2}
+  RoomNone: {fileID: 1893047613938722, guid: ee39b9fcca7eee6419ff25770c631924, type: 2}
+  RoomThemes:
+  - gameObjects:
+    - {fileID: 1563602310112466, guid: 363dc2e1504e74a48a8e2d3b00457676, type: 2}
+    - {fileID: 1785982492769738, guid: fc7367b4b2d638c4687e9421a61a9316, type: 2}
+    - {fileID: 1168997309834844, guid: f170f48f4fb6a124699b6653ecfadd74, type: 2}
+    - {fileID: 1286520138568368, guid: f67a870046731a64b9a3ac03dfed731e, type: 2}
+    - {fileID: 1732303024023748, guid: a2f72f73f2127f04983cc11d67e9701e, type: 2}
+  - gameObjects:
+    - {fileID: 1655976177524046, guid: c7a305567cf6df8469b68dbfa7cb8aec, type: 2}
+    - {fileID: 1210348703446792, guid: 22996bd4c4a77b44d86dc3cd7fc62b4f, type: 2}
+    - {fileID: 1015582371834234, guid: 643a252b4ef94264db605eff7629eeaa, type: 2}
+    - {fileID: 1665060222748712, guid: 54194818ae6fcf841a3db381bcdd3e65, type: 2}
+    - {fileID: 1638701852392320, guid: f7e341aa454b85149aa1ea314acff8b2, type: 2}
+  - gameObjects:
+    - {fileID: 1856720631952594, guid: 6642a2f91604658459ac0eb5a63dd503, type: 2}
+    - {fileID: 1826245733491472, guid: 0618a30431b5b7a4d83432f979e0a033, type: 2}
+    - {fileID: 1999021232669848, guid: ffbf80d2332e94e479fb929d744cc324, type: 2}
+    - {fileID: 1135721358037258, guid: e851792173613774899a9efc49ed59ce, type: 2}
+    - {fileID: 1752941215551796, guid: 2115a70bee085cc46bcbd4f99bcd6202, type: 2}
+  Enemies:
+  - gameObjects:
+    - {fileID: 1992794750802258, guid: 4854998a2b038c84190fe3555136487c, type: 2}
+  - gameObjects:
+    - {fileID: 1092059573346610, guid: fdc68eaa1c7dcd442a97f39c188b20a7, type: 2}
+  - gameObjects:
+    - {fileID: 1658737758180854, guid: 776b8ef28b723cb42b8df05a3bc456ad, type: 2}
+    - {fileID: 1727027984194258, guid: b9fbac5ef71a0ca4c81f936734ea9b2f, type: 2}
+    - {fileID: 1107325509899648, guid: 5e1b5b911ecf81a43b945f754599545a, type: 2}
