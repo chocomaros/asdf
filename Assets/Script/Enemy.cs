@@ -140,9 +140,10 @@ public class Enemy : MonoBehaviour {
 		Debug.Log (random);
 		Debug.Log (DropItems.Count);
 		if (random < DropItems.Count) {
-			if (DropItems [random].CompareTag ("equip_item")) {
+			if (DropItems [random].GetComponentInChildren<Equipment>() != null) {
 				GameObject dropItem = DropItems [random];
 				int level = GameObject.Find ("GameManager").GetComponent<GameManager> ().getLevel ();
+				Debug.Log ("level " + level);
 				dropItem.GetComponentInChildren<Equipment> ().SetLevel (level);
 				Instantiate (dropItem, transform.position, Quaternion.identity, GameObject.FindWithTag ("room").transform);
 			} else {

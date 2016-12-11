@@ -1408,6 +1408,13 @@ MonoBehaviour:
   blood: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 2}
   DropItems:
   - {fileID: 1663127665805662, guid: f1a431a6e41a1ea498306c34de8cb6fc, type: 2}
+  - {fileID: 1663127665805662, guid: 886f75436bcdb2e47adfce1821d3ee78, type: 2}
+  - {fileID: 1663127665805662, guid: 970e5debab48dcc4c8c3033fe574b424, type: 2}
+  - {fileID: 1818362580908096, guid: efc00ff183296654f8de5f0c17ef24a4, type: 2}
+  - {fileID: 1685032048936224, guid: 62685162db1357e45868ee934ad667ab, type: 2}
+  - {fileID: 1757309619411262, guid: fbde7d7749ff0bb4da448d3161aa7d86, type: 2}
+  - {fileID: 1532557923019454, guid: d3972d477d721844c866196f1145ed43, type: 2}
+  - {fileID: 1878519088860544, guid: aa762088bed3d5a49b9ef366fe25d90a, type: 2}
 --- !u!136 &136888816175259284
 CapsuleCollider:
   m_ObjectHideFlags: 1
