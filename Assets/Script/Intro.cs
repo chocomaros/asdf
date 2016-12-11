@@ -25,7 +25,7 @@ public class Intro : MonoBehaviour {
 		//Movie.GetComponent<RawImage> ().texture = movieTexutre as MovieTexture;
 		//audio = GetComponent<AudioSource> ();
 		//audio.clip = movieTexutre.audioClip;
-		//audio.Play ();
+
 		StartCoroutine ("IntroState");
 	}
 
@@ -45,6 +45,7 @@ public class Intro : MonoBehaviour {
 
 	void MoviePlaying(){
 		movieTexture.Play ();
+		//audio.Play ();
 		if (Input.GetMouseButtonDown (0)) {
 			movieTexture.Stop ();
 			//audio.Stop ();
