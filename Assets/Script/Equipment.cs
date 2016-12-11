@@ -10,19 +10,14 @@ public class Equipment : MonoBehaviour
     public bool isWeapon = false;
     public int HP = 0;
     public int Damage = 0;
+	public int Speed;
+	public float MaxPower;
+	public string Name;
+	public int Level = 0;
     //look
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+	public enum Type{Bow,Arrow};
+	public Type type;
 
     public void setSerialNumber(int serial)
     {
@@ -71,4 +66,12 @@ public class Equipment : MonoBehaviour
                 break;
         }
     }
+
+	public void SetLevel(int level){
+		Level = level;
+		Damage += (int)(level * 2);
+		Speed += (int)(level * 2);
+		MaxPower += (float)(level * 2);
+	}
+
 }

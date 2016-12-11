@@ -13,16 +13,35 @@ public class PlayerStatus : MonoBehaviour
 	public bool isPortalMoving = false;
 	public Portal.Position EntryPositon;
 	private bool isPaused = false;
-    private Equipment weapon, armor;
+	public Equipment Bow, Arrow;
+
+	private int equipDamage = 0;
+	private int equipSpeed = 0;
+	private float equipMaxPower = 0;
+
+	private ArrowShoot arrowShoot;
+	private WeaponUISelect weaponUI;
+	private EquipmentStatShow equipmentStatShow;
+
+	private Equipment.Type collisionType;
+
+	//    private Equipment weapon, armor;
+
 	// Use this for initialization
 	void Start ()
 	{
+		arrowShoot = gameObject.GetComponentInChildren<ArrowShoot> ();
+		weaponUI = GameObject.Find ("CameraArrow").GetComponent<WeaponUISelect> ();
+		equipmentStatShow = GameObject.FindGameObjectWithTag ("background").GetComponent<EquipmentStatShow> ();
 		hp = MaxHp;
-        weapon.setSerialNumber(0);
-        armor.setSerialNumber(4);
+		SetEquipStat ();
+		weaponUI.SetActiveArrow (Arrow.Name);
+		weaponUI.SetActiveBow (Bow.Name);
+//        weapon.setSerialNumber(0);
+//        armor.setSerialNumber(4);
 	}
 
-    public void healthChange (int changedHp)
+	public void healthChange (int changedHp)
 	{
 		if (changedHp > 0) {
 			gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.Heal);
@@ -44,14 +63,40 @@ public class PlayerStatus : MonoBehaviour
 		GameObject.FindGameObjectWithTag ("background").GetComponent<Image> ().color = c;
 	}
 
-	public void maxHealthChange(int changedMaxHp){
+	public void maxHealthChange (int changedMaxHp)
+	{
 		MaxHp += changedMaxHp;
 		healthChange (changedMaxHp);
 	}
 
-	public void damageChange(int changedDamage){
+	public void damageChange (int changedDamage)
+	{
 		gameObject.GetComponent<SoundPlayer> ().Speak (SoundPlayer.SpeakType.PowerUp);
 		Damage += changedDamage;
+	}
+
+	private void SetEquipStat ()
+	{
+		equipDamage = Bow.Damage + Arrow.Damage;
+		equipSpeed = Bow.Speed + Arrow.Speed;
+		equipMaxPower = Bow.MaxPower + Arrow.MaxPower;
+
+		arrowShoot.SetMaxPower (getMaxPower ());
+	}
+
+	public int getDamage ()
+	{
+		return equipDamage + Damage;
+	}
+
+	public int getSpeed ()
+	{
+		return equipSpeed;
+	}
+
+	public float getMaxPower ()
+	{
+		return equipMaxPower;
 	}
 
 	public int getHealth ()
@@ -80,6 +125,14 @@ public class PlayerStatus : MonoBehaviour
 
 		} else if (collider.tag == "potion" ||
 		           collider.tag == "item_box") {
+			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
+		} else if (collider.tag == "equip_item") {
+			collisionType = collider.GetComponent<Equipment> ().type;
+			if (collisionType == Equipment.Type.Arrow) {
+				equipmentStatShow.ShowWindow(Arrow,collider.GetComponent<Equipment>());
+			} else if (collisionType == Equipment.Type.Bow) {
+				equipmentStatShow.ShowWindow(Bow,collider.GetComponent<Equipment>());
+			}
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = true;
 		} else if (collider.tag == "portal") {
 			if (!isPaused) {
@@ -112,6 +165,24 @@ public class PlayerStatus : MonoBehaviour
 					Invoke ("ReleasePause", 1f);
 				}
 			}
+		} else if (collider.tag == "equip_item") {
+			if (Input.GetKey (KeyCode.E)) {
+				if (!isPaused) {
+					isPaused = true;
+					if (collisionType == Equipment.Type.Arrow) {
+						Arrow = collider.GetComponent<Equipment> ();
+						weaponUI.SetActiveArrow (Arrow.Name);
+						Destroy (collider.gameObject);
+					} else if (collisionType == Equipment.Type.Bow) {
+						Bow = collider.GetComponent<Equipment> ();
+						weaponUI.SetActiveBow (Bow.Name);
+						Destroy (collider.gameObject);
+					}
+					equipmentStatShow.QuitWindow ();
+					GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
+					Invoke ("ReleasePause", 1f);
+				}
+			}
 		} else if (collider.tag == "item_box") {
 			if (Input.GetKey (KeyCode.E)) {
 				if (!isPaused) {
@@ -127,9 +198,12 @@ public class PlayerStatus : MonoBehaviour
 
 	void OnTriggerExit (Collider collider)
 	{
-		 if (collider.tag == "portal" ||
-			collider.tag == "potion"||
-			collider.tag=="item_box") {
+		if (collider.tag == "portal" ||
+		    collider.tag == "potion" ||
+		    collider.tag == "item_box") {
+			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
+		} else if (collider.tag == "equip_item") {
+			equipmentStatShow.QuitWindow ();
 			GameObject.Find ("Active Text").GetComponent<Text> ().enabled = false;
 		}
 	}

@@ -17,6 +17,7 @@ TagManager:
   - item_box
   - room
   - obstacle
+  - equip_item
   layers:
   - Default
   - TransparentFX

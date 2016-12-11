@@ -136,11 +136,18 @@ public class Enemy : MonoBehaviour {
 		agent.Stop ();
 		animator.SetTrigger ("dead");
 		isAlive = false;
-		int random = Random.Range (0, 4);
+		int random = Random.Range (0, 10);
 		Debug.Log (random);
 		Debug.Log (DropItems.Count);
 		if (random < DropItems.Count) {
-			Instantiate (DropItems [random], transform.position, Quaternion.identity,GameObject.FindWithTag("room").transform);
+			if (DropItems [random].CompareTag ("equip_item")) {
+				GameObject dropItem = DropItems [random];
+				int level = GameObject.Find ("GameManager").GetComponent<GameManager> ().getLevel ();
+				dropItem.GetComponentInChildren<Equipment> ().SetLevel (level);
+				Instantiate (dropItem, transform.position, Quaternion.identity, GameObject.FindWithTag ("room").transform);
+			} else {
+				Instantiate (DropItems [random], transform.position, Quaternion.identity,GameObject.FindWithTag("room").transform);
+			}
 		}
 		if (GameObject.FindGameObjectsWithTag ("enemy").Length == 1) {
 			GameObject.FindObjectOfType<GameManager> ().GetComponent<GameManager> ().CurrentPortalActive ();

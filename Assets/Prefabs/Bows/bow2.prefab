@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4354151849488194}
+  - component: {fileID: 114222131456993310}
   m_Layer: 8
   m_Name: bow2
-  m_TagString: Untagged
+  m_TagString: equip_item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,6 +179,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745635712224482}
   m_Mesh: {fileID: 4300000, guid: 1c27699fa827ed64982a514d264a2242, type: 3}
+--- !u!114 &114222131456993310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270841530438150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb5aaf209612694eaf94c89cacf2dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWeapon: 0
+  HP: 0
+  Damage: 0
+  Speed: 3
+  MaxPower: 0.5
+  Name: bow of power
+  Level: 0
+  type: 0
 --- !u!136 &136554098321262104
 CapsuleCollider:
   m_ObjectHideFlags: 1

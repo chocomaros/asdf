@@ -9,7 +9,7 @@ public class ArrowShoot : MonoBehaviour {
 	public Transform tCamera;
 	public GameObject Aim;
 	private Vector3 arrowOrigin;
-	private const float MAX_POWER = 0.5f;
+	private float MAX_POWER = 0.5f;
 	private const float POWER_INCREASE_UNIT = 0.005f;
 	private const float APPEAR_TIME = 0.8f; // 1초
 
@@ -86,5 +86,9 @@ public class ArrowShoot : MonoBehaviour {
 	}
 	public float GetPower(){
 		return power;
+	}
+
+	public void SetMaxPower(float MaxPower){
+		this.MAX_POWER = MaxPower;
 	}
 }

@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1403104578236566}
+  m_RootGameObject: {fileID: 1414665970244424}
   m_IsPrefabParent: 1
---- !u!1 &1399611830214812
+--- !u!1 &1291359225282548
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4522338202313004}
-  - component: {fileID: 33006831200480828}
-  - component: {fileID: 23085281711148180}
+  - component: {fileID: 4717074987317924}
+  - component: {fileID: 33878831852957852}
+  - component: {fileID: 23624072410861474}
   m_Layer: 8
   m_Name: default
   m_TagString: Untagged
@@ -28,55 +28,55 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1403104578236566
+--- !u!1 &1414665970244424
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4990733868126924}
-  - component: {fileID: 114690801744069316}
+  - component: {fileID: 4919886929263712}
+  - component: {fileID: 114005894049193812}
   m_Layer: 8
-  m_Name: bow3
+  m_Name: arrow1_origin
   m_TagString: equip_item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4522338202313004
+--- !u!4 &4717074987317924
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1399611830214812}
+  m_GameObject: {fileID: 1291359225282548}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4990733868126924}
+  m_Father: {fileID: 4919886929263712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4990733868126924
+--- !u!4 &4919886929263712
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1403104578236566}
-  m_LocalRotation: {x: -0.17568164, y: -0.120924234, z: -0.323341, w: 0.9219349}
-  m_LocalPosition: {x: 0.0048365593, y: -0.2990017, z: 0.6613653}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_GameObject: {fileID: 1414665970244424}
+  m_LocalRotation: {x: 0.7071066, y: 0, z: 0, w: -0.70710695}
+  m_LocalPosition: {x: -0.0009999275, y: 0.05099964, z: 0.025}
+  m_LocalScale: {x: 0.05, y: 0.04, z: 0.050000012}
   m_Children:
-  - {fileID: 4522338202313004}
+  - {fileID: 4717074987317924}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -23.712002, y: -6.86, z: -37.212}
---- !u!23 &23085281711148180
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23624072410861474
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1399611830214812}
+  m_GameObject: {fileID: 1291359225282548}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,8 +84,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: efeba36ccba4ea242b273ae6c08b3ebf, type: 2}
-  - {fileID: 2100000, guid: 7399fa52f934e9849b8aeff9a28101e0, type: 2}
+  - {fileID: 2100000, guid: 971de6301b09f154e81f6b27862d54a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,19 +102,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33006831200480828
+--- !u!33 &33878831852957852
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1399611830214812}
-  m_Mesh: {fileID: 4300000, guid: 02eb0d4c543cc0b4ab5b52e6609589dc, type: 3}
---- !u!114 &114690801744069316
+  m_GameObject: {fileID: 1291359225282548}
+  m_Mesh: {fileID: 4300000, guid: 432dd2b7c2581c744a40ca43b1307c17, type: 3}
+--- !u!114 &114005894049193812
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1403104578236566}
+  m_GameObject: {fileID: 1414665970244424}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cb5aaf209612694eaf94c89cacf2dfc, type: 3}
@@ -123,9 +122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWeapon: 0
   HP: 0
-  Damage: 0
-  Speed: 4
-  MaxPower: 0.4
-  Name: normal bow
+  Damage: 5
+  Speed: 0
+  MaxPower: 0
+  Name: arrow of wind
   Level: 0
-  type: 0
+  type: 1

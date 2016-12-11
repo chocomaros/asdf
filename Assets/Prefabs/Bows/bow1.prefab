@@ -36,9 +36,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4207164671155008}
+  - component: {fileID: 114845889678072814}
   m_Layer: 8
   m_Name: bow1
-  m_TagString: Untagged
+  m_TagString: equip_item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,3 +109,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776935914219276}
   m_Mesh: {fileID: 4300000, guid: 022a72268e462114788abcf0c0b07418, type: 3}
+--- !u!114 &114845889678072814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871494780751980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb5aaf209612694eaf94c89cacf2dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWeapon: 0
+  HP: 0
+  Damage: 0
+  Speed: 6
+  MaxPower: 0.3
+  Name: bow of wind
+  Level: 0
+  type: 0
