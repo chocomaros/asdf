@@ -1,8 +1,8 @@
 ﻿using System;
 
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
 namespace DigitalRuby.PyroParticles
 {
     [CustomEditor(typeof(DemoScript))]
@@ -48,3 +48,4 @@ namespace DigitalRuby.PyroParticles
         }
     }
 }
+#endif

@@ -8,7 +8,6 @@ public class Intro : MonoBehaviour {
 
 	public GameObject Movie;
 	private MovieTexture movieTexture;
-	private AudioSource audio;
 
 	private enum State{MOVIE_PLAYING, SELECT_UI};
 	static State state = State.MOVIE_PLAYING;
@@ -22,9 +21,6 @@ public class Intro : MonoBehaviour {
 		btStart.enabled = false;
 		btExit.enabled = false;
 		movieTexture = Movie.GetComponent<RawImage> ().texture as MovieTexture;
-		//Movie.GetComponent<RawImage> ().texture = movieTexutre as MovieTexture;
-		//audio = GetComponent<AudioSource> ();
-		//audio.clip = movieTexutre.audioClip;
 
 		StartCoroutine ("IntroState");
 	}
@@ -45,10 +41,8 @@ public class Intro : MonoBehaviour {
 
 	void MoviePlaying(){
 		movieTexture.Play ();
-		//audio.Play ();
 		if (Input.GetMouseButtonDown (0)) {
 			movieTexture.Stop ();
-			//audio.Stop ();
 			state = State.SELECT_UI;
 		}
 	}
@@ -60,11 +54,15 @@ public class Intro : MonoBehaviour {
 	}
 
 	private void btStartClick(){
+		btStart.GetComponentInChildren<Text> ().color = Color.yellow;
 		SceneManager.LoadScene (1);
 	}
 
 	private void btExitClick(){
+		btExit.GetComponentInChildren<Text> ().color = Color.yellow;
 		Application.Quit ();
+		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
+		#endif
 	}
 }

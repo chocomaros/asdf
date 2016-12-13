@@ -7,8 +7,6 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Intro.unity
-  - enabled: 0
-    path: Assets/Prefabs/Temp/scene1.unity
   - enabled: 1
     path: Assets/scene1.unity
   - enabled: 1
